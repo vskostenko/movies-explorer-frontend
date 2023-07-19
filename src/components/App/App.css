@@ -1,0 +1,8 @@
+.page {
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    background: #202020;
+    margin: auto;
+    color: #fff;
+}
