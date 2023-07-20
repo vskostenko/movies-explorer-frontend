@@ -5,8 +5,9 @@
     background: #202020;
     color: #fff;
     margin: 0 auto;
+    font-family: Inter;
 }
-.article__caption {
+.article__title {
     font-family: Inter;
     font-size: 22px;
     font-style: normal;
@@ -14,15 +15,9 @@
     line-height: normal;
     letter-spacing: -0.88px;
     position: relative;
+    margin: 0 0 23px;
 }
-.article__caption::after {
-    content: " ";
-    background: #333333;
-    width: 50px;
-    height: 1px;
-    /* размещаем линию снизу и справа*/
-    bottom: 15px;
-    right: 20px;
-    /* включаем абсолютное позиционирование относительно блока с relative */
-    position: absolute;
+.article__line {
+    color: #DADADA;
+    height:  0px;
 }

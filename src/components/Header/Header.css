@@ -16,15 +16,18 @@
 
 }
 .header__login {
-    width: 200px;
+    width: 183px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
-
 .header__button {
     border:0;
     padding: 8px 20px;
     border-radius: 3px;
     background: #3DDC84;
-    margin-left: 30px;
+    margin-left: 0px;
     color: #000;
     font-family: Inter;
     font-size: 12px;
@@ -32,7 +35,6 @@
     font-weight: 500;
     line-height: 16px;
 }
-
 .header__link {
     color: #fff;
     font-family: Inter;
