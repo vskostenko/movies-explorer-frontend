@@ -20,4 +20,30 @@
 .techs__text {
     text-align: center;
     width: 460px;
+    justify-self: center;
+    margin:auto;
+}
+.techs__list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+    margin-top: 100px;
+}
+.techs__listitem {
+    border-radius: 10px;
+    background: #303030;
+    width: 90px;
+    height: 60px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
