@@ -57,4 +57,18 @@
 .aboutproject__gridcell {
     height: 36px;
     align-content:center;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    justify-content: center;
 }
+
+.aboutproject__gridcell_green {
+    background: #3DDC84;
+    color: #000;
+}
+.aboutproject__gridcell_grey {
+    background: #303030;
+    color: #FFF;
+}
+
