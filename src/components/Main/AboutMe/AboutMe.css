@@ -1,0 +1,54 @@
+.aboutme {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 110px 70px 101px;
+    background: #202020;
+}
+.aboutme__name {
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px; /* 116% */
+    letter-spacing: -2px;
+    margin: 0;
+}
+.aboutme__prof {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 111.111% */
+    margin: 18px 0 26px;
+}
+.aboutme__bio {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    margin: 0 0 99px;
+}
+.aboutme_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 54px;
+}
+.aboutme__textblock {
+    max-width: 600px;
+}
+.aboutme__photo {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+}
+.aboutme__git {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: #fff;
+}

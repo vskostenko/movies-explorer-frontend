@@ -6,6 +6,8 @@
     color: #fff;
     margin: 0 auto;
     font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
 }
 .article__title {
     font-family: Inter;
@@ -21,3 +23,13 @@
     color: #DADADA;
     height:  0px;
 }
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity ease-in-out 0.2s;
+    color: #fff;
+  }
+  .link:hover {
+    opacity: 0.6;
+  }
