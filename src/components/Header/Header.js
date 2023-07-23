@@ -12,7 +12,7 @@ function Header() {
                 <div className="header__container">
                     <Logo />
                     <nav className="header__login">
-                            <Link className="header__link"> 
+                            <Link className="header__link link"> 
                                 Регистрация
                             </Link>   
                             <button className="header__button">

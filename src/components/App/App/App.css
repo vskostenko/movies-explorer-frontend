@@ -30,6 +30,12 @@
     transition: opacity ease-in-out 0.2s;
     color: #fff;
   }
-  .link:hover {
+.link_blue {
+    color: #4285F4;
+}
+.link_red {
+    color: #EE3465;
+}
+.link:hover {
     opacity: 0.6;
-  }
+}
