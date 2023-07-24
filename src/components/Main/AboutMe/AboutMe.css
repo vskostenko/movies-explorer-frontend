@@ -52,3 +52,37 @@
     line-height: normal;
     color: #fff;
 }
+
+@media screen and (max-width:768px) {
+    .aboutme {
+        margin: 90px 50px 91px;
+    }
+    .aboutme__name {
+        font-size: 40px;
+        line-height: 40px; /* 100% */
+        letter-spacing: -1.6px;
+    }
+    .aboutme__photo {
+        width: 255px;
+        height: 307px;
+        border-radius: 10px;
+    }
+    .aboutme_container {
+        margin-top: 58px;
+    }
+    .aboutme__prof {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px; /* 150% */
+        margin: 16px 0 20px;
+    }
+    .aboutme__bio {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 87px;
+    }
+    .aboutme__textblock {
+        max-width: 364px;
+    }
+}

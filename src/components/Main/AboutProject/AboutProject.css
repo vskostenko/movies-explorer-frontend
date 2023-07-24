@@ -73,3 +73,23 @@
     color: #FFF;
 }
 
+@media screen and (max-width:768px) {
+
+    .aboutproject {
+        margin: 90px 50px;
+        max-width: 100%;
+    }
+    .aboutproject__text-container {
+        margin-right: 40px;
+    }
+    .aboutproject__subtitle {
+        margin: 0 0 22px 0;
+    }
+    .aboutproject__text {
+        font-size: 12px;
+        line-height: 18px; 
+    }
+    .aboutproject__grid {
+        margin-top: 93px;
+    }
+}

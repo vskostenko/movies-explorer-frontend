@@ -41,3 +41,9 @@
 .footer__navlist-item {
     margin-left: 20px;
 }
+
+@media screen and (min-width:768px) {
+    .footer {
+        margin: 75px 30px 0;
+    }
+}

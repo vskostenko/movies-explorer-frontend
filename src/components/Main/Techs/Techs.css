@@ -57,3 +57,29 @@
 .techs__listitem:last-of-type {
     margin-right: 0;
 }
+
+@media screen and (max-width:768px) {
+    .techs {
+        max-width: 100%;
+        padding: 90px 50px;
+    }
+    .techs__header {
+        margin: 80px auto 22px;
+    }
+    .techs__text {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+        letter-spacing: -0.48px;
+    }
+    .techs__list {
+        margin: 83px auto 0px;
+    }
+    .techs__listitem {
+        width: 84px;
+        height: 57px;
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+}
