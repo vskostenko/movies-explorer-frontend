@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../Logo/Logo";
 import './Header.css';
-import { Link } from "react-router-dom";
+import { Link, Route, Switch, Routes } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
 
 
@@ -11,6 +12,7 @@ function Header() {
             <header className="header">
                 <div className="header__container">
                     <Logo />
+                    <Navigation />
                     <nav className="header__login">
                             <Link className="header__link link"> 
                                 Регистрация

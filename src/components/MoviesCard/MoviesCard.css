@@ -1,0 +1,35 @@
+.moviescard {
+    display: flex;
+    flex-direction: column;
+    height: 271px;
+}
+.moviescard__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 68px;
+    align-items: center;
+}
+.moviescard__icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 14px;
+}
+.moviescard__name {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin:0 0 9px;
+}
+.moviescard__duration {
+    color: #8B8B8B;
+    font-size: 11px;
+    margin:0;
+}
+.moviescard__text {
+    margin: 14px;
+}
+.moviescard__image {
+    width: 100%;
+}

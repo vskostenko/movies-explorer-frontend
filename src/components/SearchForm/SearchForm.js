@@ -8,7 +8,7 @@ function SearchForm () {
 
     }
     return (
-        <>
+        <div className="searhform" >
             <div className="searchform__container">
                 <input className="searchform__field" type="film" name="film" required placeholder="Фильм"  autoComplete="off" onChange={handleChange}/>
                 <button className="searhform__button">
@@ -16,7 +16,7 @@ function SearchForm () {
                 </button>
             </div>
             <FilterCheckbox />
-        </>
+        </div>
     )
 }
 export default SearchForm;

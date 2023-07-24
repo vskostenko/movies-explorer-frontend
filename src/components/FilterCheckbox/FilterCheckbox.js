@@ -1,6 +1,6 @@
 import React from "react";
 import "./FilterCheckbox.css";
-import checkboxIcon from "../../images/checkbox.png"
+
 
 function FilterCheckbox () {
     return (
