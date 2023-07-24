@@ -1,26 +1,20 @@
 import React from "react";
 import Logo from "../Logo/Logo";
 import './Header.css';
-import { Link, Route, Switch, Routes } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
+import LoginNavi from "../LoginNavi/LoginNavi";
 
 
 
 function Header() {
+    let { pathname } = useLocation();
     return (
         <>
-            <header className="header">
+            <header  className={ pathname === '/' ? 'header' : 'header header_black'}>
                 <div className="header__container">
                     <Logo />
-                    <Navigation />
-                    <nav className="header__login">
-                            <Link className="header__link link"> 
-                                Регистрация
-                            </Link>   
-                            <button className="header__button">
-                                Войти
-                            </button>
-                    </nav>
+                    { pathname ==='/' ? <LoginNavi /> : <Navigation /> }
                 </div>
             </header>
         </>
