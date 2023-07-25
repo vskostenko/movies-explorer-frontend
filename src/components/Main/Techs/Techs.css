@@ -83,3 +83,34 @@
         letter-spacing: -0.48px;
     }
 }
+
+@media screen and (max-width:320px) {
+    .techs {
+        padding: 58px 18px;
+    }
+    .techs__header {
+        margin: 48px auto 12px;
+        font-size: 30px;
+        letter-spacing: -1.2px;
+    }
+    .techs__text {
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px; /* 145.455% */
+        letter-spacing: -0.44px;
+        width: 100%;
+    }
+    .techs__list {
+        margin: 50px auto 0px;
+        width: 178px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .techs__listitem {
+        margin-right: 0px;
+        margin-bottom: 10px;
+        width: 84px;
+        height: 57px;
+    }
+}

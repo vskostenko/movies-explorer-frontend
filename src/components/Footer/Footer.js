@@ -6,7 +6,7 @@ function Footer (){
         <footer className="footer">
             <div className="footer__caption">Учебный проект Яндекс.Практикум х BeatFilm.</div>
             <div className="footer__links-container">
-                <p className='footer__copyright'>&copy;2023</p>
+                <p className='footer__copyright'>&copy;                                                     2023</p>
                 <nav className="footer__navlist">
                     <li className="footer__navlist-item">
                     <a
@@ -28,7 +28,6 @@ function Footer (){
                     Github
                     </a>
                     </li>
-                
                 </nav>
             </div>
 

@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 54px;
+    margin-top: 58px;
 }
 .aboutme__textblock {
     max-width: 600px;
@@ -84,5 +84,44 @@
     }
     .aboutme__textblock {
         max-width: 364px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .aboutme {
+        margin: 75px 14px 70px;
+    }
+    .aboutme_container {
+        margin-top: 50px;
+        flex-direction: column-reverse;
+    }
+    .aboutme__photo {
+        width: auto;
+        height: 352px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
+    .aboutme__textblock {
+        max-width: 100%;
+        margin: 40 auto;
+    }
+    .aboutme__name {
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -1.2px;
+    }
+    .aboutme__prof {
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        margin: 20px 0 20px;
+    }
+    .aboutme__bio {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 0 40px;
     }
 }

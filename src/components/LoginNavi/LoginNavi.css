@@ -27,3 +27,24 @@
     line-height: 16px;
     text-decoration: none;
 }
+@media screen and (max-width:320px) {
+    .loginnavi__login {
+        width: 132px;
+    }
+    .loginnavi__button {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        width: 54px;
+        height: 26px;
+        padding: 5px 12px;
+    }
+    .loginnavi__link {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px; 
+    }
+}
+

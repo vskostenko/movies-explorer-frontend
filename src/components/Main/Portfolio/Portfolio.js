@@ -26,7 +26,7 @@ function Portfolio () {
                         target='_blank'
                         rel="noreferrer">
                         <p className='portfolio__listitem-text'>Одностраничное приложение</p>
-                        <img src={arrowImg} alt="arrow" />
+                        <img className="portfolio__listitem-icon" src={arrowImg} alt="arrow" />
                     </a>
             </div>
         </section>

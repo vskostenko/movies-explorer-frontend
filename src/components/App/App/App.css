@@ -1,3 +1,4 @@
+ /* {border: 1px solid rgb(109, 3, 3);}*/
 .page {
     max-width: 1280px;
     display: flex;
@@ -8,6 +9,7 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
+
 }
 .article__title {
     font-family: Inter;
@@ -38,4 +40,15 @@
 }
 .link:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width:768px) {
+    .article__title {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.72px;
+        margin-bottom: 28px ;
+    }
 }
