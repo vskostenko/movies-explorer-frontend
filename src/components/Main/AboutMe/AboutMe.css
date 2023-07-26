@@ -36,13 +36,15 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 58px;
+    width: 100%;
 }
 .aboutme__textblock {
     max-width: 600px;
 }
 .aboutme__photo {
-    width: 270px;
-    height: 327px;
+    width: 100%;
+    height: auto;
+    max-width: 270px;
     border-radius: 10px;
 }
 .aboutme__git {
@@ -63,9 +65,7 @@
         letter-spacing: -1.6px;
     }
     .aboutme__photo {
-        width: 255px;
-        height: 307px;
-        border-radius: 10px;
+
     }
     .aboutme_container {
         margin-top: 58px;
@@ -89,7 +89,7 @@
 
 @media screen and (max-width:320px) {
     .aboutme {
-        margin: 73px 14px 70px;
+        margin: 85px 14px 70px;
     }
     .aboutme_container {
         margin-top: 52px;
