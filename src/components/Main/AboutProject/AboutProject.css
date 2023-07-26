@@ -130,7 +130,7 @@
         margin-bottom: 58px;
     }
     .aboutproject__grid {
-        margin-top: 0px;
+        margin-top: 5px;
         grid-template-columns: 35% 65%;
         row-gap: 0px;
     }
