@@ -52,23 +52,29 @@
         margin: 50px 14px 0;
     }
     .footer__caption {
+        max-width: 100%;
         font-size: 12px;
-        margin-bottom: 52px;
+        margin-bottom: 0;
+        padding-bottom: 21px;
+        border-bottom: 1px solid #424242;
     }
     .footer__links-container {
-        margin-top: 30px;
+        margin-top: 62px;
         flex-direction: column-reverse;
+        border:0;
     }
     .footer__navlist {
         flex-direction: column;
         font-size: 12px;
-        margin: 0 auto;
+        margin: 30px auto  0;
+
     }
     .footer__copyright {
-        margin: 0 auto;
+        margin: 20px auto 0;
+        font-size: 12px;
     }
     .footer__navlist-item {
-        margin:0 auto 20px;
+        margin:0 auto 12px;
     }
 
 }
