@@ -12,14 +12,14 @@ function Portfolio () {
                         target='_blank'
                         rel="noreferrer">
                         <p className='portfolio__listitem-text'>Статичный сайт</p>
-                        <img src={arrowImg} alt="arrow" />
+                        <img className="portfolio__listitem-icon" src={arrowImg} alt="arrow" />
                     </a>
                     <a className='portfolio__listitem link' 
                         href='https://github.com/vskostenko/how-to-learn'
                         target='_blank'
                         rel="noreferrer">
                         <p className='portfolio__listitem-text'>Адаптивный сайт</p>
-                        <img src={arrowImg} alt="arrow" />
+                        <img className="portfolio__listitem-icon" src={arrowImg} alt="arrow" />
                      </a>
                     <a className='portfolio__listitem link' 
                         href='https://github.com/vskostenko/how-to-learn'

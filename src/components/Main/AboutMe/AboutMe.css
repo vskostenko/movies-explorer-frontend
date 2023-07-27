@@ -4,6 +4,11 @@
     max-width: 1140px;
     margin: 110px 70px 101px;
     background: #202020;
+    max-width: 100%;
+}
+.aboutme__header {
+    margin:0 auto;
+    width: 100%;
 }
 .aboutme__name {
     font-size: 50px;
@@ -42,9 +47,8 @@
     max-width: 600px;
 }
 .aboutme__photo {
-    width: 100%;
-    height: auto;
-    max-width: 270px;
+    width: 270px;
+    height: 327px;
     border-radius: 10px;
 }
 .aboutme__git {
@@ -65,7 +69,8 @@
         letter-spacing: -1.6px;
     }
     .aboutme__photo {
-
+        width: 255px;
+        height: 307px;
     }
     .aboutme_container {
         margin-top: 58px;
@@ -87,7 +92,7 @@
     }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:550px) {
     .aboutme {
         margin: 85px 14px 70px;
     }
@@ -96,7 +101,8 @@
         flex-direction: column-reverse;
     }
     .aboutme__photo {
-        width: auto;
+        margin: 0 auto;
+        width: 292px;
         height: 352px;
         border-radius: 10px;
         margin-bottom: 40px;
