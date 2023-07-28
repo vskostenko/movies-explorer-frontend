@@ -1,5 +1,5 @@
 .moviescardlist {
-    margin: 70px 70px 30px;
+    margin: 68px 70px 37px;
     display: flex;	
     justify-content: center;	
     flex-direction: column;
@@ -28,4 +28,15 @@
     border: 1px solid #424242;;
     border-radius: 4px;
     padding: 0;
+}
+
+@media screen and (max-width:768px) {
+    .moviescardlist__grid {
+        row-gap: 36px;
+        column-gap: 30px;
+        grid-template-columns: repeat(auto-fit, 339px);
+    }
+    .moviescardlist {
+        margin: 68px 30px 37px;
+    }
 }

@@ -19,7 +19,7 @@
     font-weight: 500;
     background-color: transparent;
     border: 0;
-    padding:0;
+    padding: 0;
 }
 .searchform__icon {
 }
@@ -27,4 +27,14 @@
     background-color: transparent;
     border:0;
     padding:0;
+}
+
+@media screen and (max-width:768px) {
+
+    .searchform__container {
+        margin: 68px 30px 30px;
+    }
+    .searhform {
+        margin-bottom: 30x;
+    }
 }

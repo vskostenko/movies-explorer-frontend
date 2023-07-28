@@ -5,8 +5,6 @@ import { useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import LoginNavi from "../LoginNavi/LoginNavi";
 
-
-
 function Header() {
     let { pathname } = useLocation();
     return (

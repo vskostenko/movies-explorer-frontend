@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 271px;
+    width: 364px;
 }
 .moviescard__header {
     display: flex;
@@ -32,4 +33,11 @@
 }
 .moviescard__image {
     width: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .moviescard {
+        height: 258px;
+        width: 339px;
+    }
 }
