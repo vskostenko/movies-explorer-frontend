@@ -9,6 +9,7 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
+    min-width: 320px;
 
 }
 .article__title {

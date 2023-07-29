@@ -4,6 +4,7 @@ import './Header.css';
 import { useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import LoginNavi from "../LoginNavi/LoginNavi";
+import MenuModal from "./MenuModal/MenuModal";
 
 function Header() {
     let { pathname } = useLocation();

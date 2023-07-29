@@ -38,3 +38,19 @@
         margin-bottom: 30x;
     }
 }
+@media screen and (max-width:320px) {
+
+    .searchform__container {
+        margin: 75px 15px 40px;
+        height: 52px;
+    }
+    .searhform {
+        margin-bottom: 30x;
+    }
+    .searchform__field {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}

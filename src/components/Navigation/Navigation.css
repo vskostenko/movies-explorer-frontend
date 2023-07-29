@@ -12,6 +12,9 @@
 .navigation__item {
     margin-left: 20px;
 }
+.navigation__item:last-of-type {
+    margin-left: 50px;
+}
 .navigation__icon {
     margin:0;
     border-radius: 50px;
@@ -67,5 +70,14 @@
     }
     .navigation {
         display: none;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .navigation__modal-button {
+        height: 43px;
+        width: 40px;
+    }
+    .navigation__menu-icon {
     }
 }

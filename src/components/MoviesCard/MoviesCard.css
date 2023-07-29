@@ -1,8 +1,9 @@
 .moviescard {
     display: flex;
     flex-direction: column;
-    height: 271px;
-    width: 364px;
+    width: 100%;
+    background: #222;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
 }
 .moviescard__header {
     display: flex;
@@ -41,3 +42,10 @@
         width: 339px;
     }
 }
+@media screen and (max-width:320px) {
+    .moviescard {
+        height: 236px;
+        width: 300px;
+    }
+}
+

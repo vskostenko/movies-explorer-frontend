@@ -7,6 +7,7 @@ import Login from "../../Login/Login";
 import Register from "../../Register/Register";
 import Profile from "../../Profile/Profile";
 import Movies from "../../Movies/Movies";
+import MenuModal from "../../Header/MenuModal/MenuModal";
 
 function App() {
     return (
@@ -19,7 +20,7 @@ function App() {
                     <Route path="/movies" element={<Movies />} />
                     <Route index element={<Main />} />
                 </Routes>
-
+                <MenuModal />
             </div>
         </BrowserRouter>
     )
