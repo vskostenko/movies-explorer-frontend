@@ -30,6 +30,7 @@
     color: #FFF;
     font-size: 13px;
     padding-left: 20px;
+    outline:none;
 }
 .login__button {
     height: 45px;

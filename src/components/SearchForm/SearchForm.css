@@ -20,8 +20,11 @@
     background-color: transparent;
     border: 0;
     padding: 0;
+    outline:none;
 }
-.searchform__icon {
+.searchform__field:focus {
+    background-color: #272424;
+    border-radius: 10px;
 }
 .searhform__button {
     background-color: transparent;

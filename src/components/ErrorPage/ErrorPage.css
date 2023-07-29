@@ -1,0 +1,51 @@
+.errorpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    width: 100%;
+    height: 700px;
+    background: #202020;
+    padding: 0 auto;
+}
+.errorpage__title {
+    color: #FFF;
+    text-align: center;
+    font-size: 140px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 246px 0 5px;
+}
+.errorpage__text {
+    font-size: 16px;
+    margin: 0 auto 184px;
+}
+.errorpage__link {
+    font-size: 14px;
+}
+@media screen and (max-width:768px) {
+    .errorpage {
+        height: 1024px;
+    }
+    .errorpage__title {
+        margin: 408px 0 5px;
+    }
+    .errorpage__text {
+        margin-bottom: 208px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .errorpage {
+        height: 780px;
+    }
+    .errorpage__title {
+        margin: 329px 0 10px;
+        font-size: 80px;
+    }
+    .errorpage__text {
+        margin-bottom: 284px;
+        font-size: 12px;
+    }
+}

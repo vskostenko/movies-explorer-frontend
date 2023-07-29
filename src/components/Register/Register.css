@@ -30,6 +30,7 @@
     color: #FFF;
     font-size: 13px;
     padding-left: 20px;
+    outline:none;
 }
 .register__field_red {
     color: #EE3465;
