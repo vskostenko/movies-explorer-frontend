@@ -6,10 +6,13 @@
     background-color: #202020;;
     position: fixed;
     right: 0;
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     transition: visibility 0.7s, opacity ease 0.7s;
     z-index: 1;
+}
+.menumodal_opened {
+    visibility: visible;
 }
 .menumodal__container {
     display: flex;
@@ -59,4 +62,25 @@
 }
 .menumodal__link:hover {
     border-bottom: 2px solid #fff;
+}
+
+@media screen and (max-width:320px) {
+    .menumodal {
+        width: 320px;
+    }
+    .menumodal__container {
+        padding: 10px;
+    }
+    .menumodal_closebutton {
+        height: 35px;
+        width: 35px;
+    }
+    .menumodal__item {
+        margin-bottom: 18px;
+        margin-top: 7px
+    }
+    .menumodal_navlist {
+        margin-top: 90px;
+        margin-bottom: 430px;
+    }
 }

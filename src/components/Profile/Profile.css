@@ -37,3 +37,30 @@
     margin: 8px 0;
     font-size: 13px;
 }
+
+@media screen and (max-width:768px) {
+    .profile {
+        margin: 163px auto;
+    }
+    .profile__greet {
+        margin: 74px 0 97px;
+    }
+    .profile__data-container:last-of-type {
+        margin-bottom: 185px;
+    }
+}
+@media screen and (max-width:320px) {
+    .profile {
+        margin: 0 auto 30px;
+        width: 100%;
+    }
+    .profile__greet {
+        margin: 71px 0 80px;
+    }
+    .profile__data-container:last-of-type {
+        margin-bottom: 355px;
+    }
+    .profile__data-container {
+        width: 260px;
+    }
+}

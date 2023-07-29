@@ -5,12 +5,14 @@ import "./LoginNavi.css";
 function LoginNavi() {
     return (
     <nav className="loginnavi__login">
-        <Link className="loginnavi__link link"> 
+        <Link to="/signup" className="loginnavi__link link"> 
             Регистрация
         </Link>   
-        <button className="loginnavi__button">
+        <Link to="/signin" className="link">
+            <button className="loginnavi__button">
             Войти
-        </button>
+            </button>
+        </Link>
     </nav>
     )
 }
