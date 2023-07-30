@@ -45,6 +45,7 @@
 }
 .aboutme__textblock {
     max-width: 600px;
+    padding-right: 14px;
 }
 .aboutme__photo {
     width: 270px;
@@ -101,15 +102,17 @@
         flex-direction: column-reverse;
     }
     .aboutme__photo {
-        margin: 0 auto;
-        width: 292px;
-        height: 352px;
+        margin: 10px auto;
+        width: 272px;
+        height: 342px;
         border-radius: 10px;
         margin-bottom: 40px;
+        object-fit: cover;
     }
     .aboutme__textblock {
         max-width: 100%;
         margin: 40 auto;
+        padding-right: 0px;
     }
     .aboutme__name {
         font-size: 30px;

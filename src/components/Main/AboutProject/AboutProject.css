@@ -98,7 +98,7 @@
     }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:550px) {
 
     .aboutproject {
         margin: 70px 18px 70px;
@@ -113,6 +113,7 @@
         margin-right: 0px;
         display: flex;
         flex-direction: column;
+        margin-bottom: 5px;
     }
     .aboutproject__subtitle {
         font-size: 18px;
@@ -130,7 +131,7 @@
         margin-bottom: 55px;
     }
     .aboutproject__grid {
-        margin-top: 5px;
+        margin-top: 0px;
         grid-template-columns: 35% 65%;
         row-gap: 0px;
     }

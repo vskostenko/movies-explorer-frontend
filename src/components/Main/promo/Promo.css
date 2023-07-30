@@ -28,7 +28,7 @@
     width: 722px;
     height: 244px;
     background-position: center;
-    background-size: cover auto;
+    background-size: cover;
     background-image: url('../../../images/promo.svg');
     margin: 102px 70px 0 ;
 }
@@ -55,7 +55,7 @@
     }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:500px) {
 
     .promo {
         height: 630px;

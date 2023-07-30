@@ -26,7 +26,7 @@
     }
 
 }
-@media screen and (max-width:320px) {
+@media screen and (max-width:500px) {
 
     .header__container {
         margin: 0px 14px;

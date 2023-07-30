@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer"
 function Main (props) {
   console.log(props.onModalMenuClick);
     return (
-      <>
+      <main>
         <Header />
         <Promo />
         <AboutProject />
@@ -18,7 +18,7 @@ function Main (props) {
         <AboutMe />
         <Portfolio />
         <Footer/>
-      </>
+      </main>
     );
   };
   

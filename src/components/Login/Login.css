@@ -1,9 +1,10 @@
 .login {
     display: flex;
     flex-direction: column;
-    margin: 70px auto;
+    margin: 70px auto 0px;
     align-items: center;
-    width: 396px;
+    max-width: 396px;
+    width: 100%;
 }
 .login__greet {
     font-size: 24px;
@@ -22,6 +23,7 @@
     width: 100%;
 }
 .login__field {
+    display: block;
     width: calc(100% - 20px);
     border-radius: 8px;
     background: #2F2F2F;
@@ -51,6 +53,32 @@
 
 @media screen and (max-width:768px) {
     .login {
-        margin: 232px auto;
+        margin: 56px auto;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .login {
+        margin: 56px auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .login__field {
+    }
+    .login__greet {
+        margin: 50px 0 60px;
+    }
+    .login__form {
+        width: calc(100% - 60px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login__button {
+        margin-top: 267px;
+    }
+    .login__signin {
+        font-size: 12px;
     }
 }

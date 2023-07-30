@@ -27,7 +27,7 @@
     line-height: 16px;
     text-decoration: none;
 }
-@media screen and (max-width:320px) {
+@media screen and (max-width:400px) {
     .loginnavi__login {
         width: 132px;
     }

@@ -9,12 +9,10 @@ function SearchForm () {
     }
     return (
         <div className="searhform" >
-            <div className="searchform__container">
+            <form className="searchform__container">
                 <input className="searchform__field" type="film" name="film" required placeholder="Фильм"  autoComplete="off" onChange={handleChange}/>
-                <button className="searhform__button">
-                    <img className="searchform__icon" src={findIcon} alt="search"/>
-                </button>
-            </div>
+                <input className="searhform__button" type="submit" value=" " />
+            </form>
             <FilterCheckbox />
         </div>
     )

@@ -11,7 +11,6 @@ function Login () {
 
     }
     return (
-        <main>
             <div className="login">
                 <form className="login__form">
                     <img src={logoImg} alt="logo"/>
@@ -25,9 +24,8 @@ function Login () {
                 </form>
                 <p className='login__signin'>Ещё не зарегистрированы?
                     <Link to='/signup' className='link link_blue'>&nbsp;Регистрация</Link>
-        </p>
+                </p>
             </div>
-        </main>
     )
 }
 

@@ -47,6 +47,7 @@
     letter-spacing: -1.2px; 
     width: 880px;
     margin: 0 0 40px;
+    margin-right: 14px;
 }
 
 .portfolio__listitem-icon {
@@ -70,7 +71,7 @@
         margin-bottom: 20px
     }
 }
-@media screen and (max-width:320px) {
+@media screen and (max-width:550px) {
     .portfolio {
         margin: 0 14px;
     }
@@ -86,10 +87,11 @@
         font-size: 18px;
         line-height: 28px; /* 155.556% */
         letter-spacing: -0.72px;
+        width: 100%;
     }
     .portfolio__listitem {
         height: 47px;
-        margin-bottom: 20px
-
+        margin-bottom: 20px;
+        width:100%
     }
 }

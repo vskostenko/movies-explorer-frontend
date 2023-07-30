@@ -8,7 +8,7 @@ function Portfolio () {
             <h4 className="portfolio__title">Портфолио</h4>
             <div className="portfolio__list">
                     <a className='portfolio__listitem link' 
-                        href='https://github.com/vskostenko/how-to-learn'
+                        href='https://github.com/vskostenko/russian-travel'
                         target='_blank'
                         rel="noreferrer">
                         <p className='portfolio__listitem-text'>Статичный сайт</p>
@@ -22,7 +22,7 @@ function Portfolio () {
                         <img className="portfolio__listitem-icon" src={arrowImg} alt="arrow" />
                      </a>
                     <a className='portfolio__listitem link' 
-                        href='https://github.com/vskostenko/how-to-learn'
+                        href='https://github.com/vskostenko/react-mesto-auth'
                         target='_blank'
                         rel="noreferrer">
                         <p className='portfolio__listitem-text'>Одностраничное приложение</p>
