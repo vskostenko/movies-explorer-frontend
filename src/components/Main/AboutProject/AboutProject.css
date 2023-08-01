@@ -1,0 +1,145 @@
+.aboutproject {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 110px 70px 98px;
+}
+.aboutproject__container {
+
+}
+.aboutproject__textblock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+.aboutproject__text-container {
+    margin-right: 50px;
+}
+.aboutproject__text-container:last-child {
+    margin-right: 0px;
+}
+.aboutproject__subtitle {
+    margin: 0 0 26px 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+.aboutproject__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.aboutproject__grid {
+    margin-top: 110px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    justify-items: stretch;
+    vertical-align: middle;
+    align-content:center;
+    row-gap: 5px;
+  }
+.aboutproject__gridcell {
+    height: 36px;
+    align-content:center;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    justify-content: center;
+}
+
+.aboutproject__gridcell_green {
+    background: #3DDC84;
+    color: #000;
+}
+.aboutproject__gridcell_grey {
+    background: #303030;
+    color: #FFF;
+}
+
+@media screen and (max-width:768px) {
+
+    .aboutproject {
+        margin: 90px 50px 82px;
+        max-width: 100%;
+    }
+    .aboutproject__grid {
+        grid-template-columns: 1fr 4fr;
+        row-gap: 3px;
+    }
+    .aboutproject__text-container {
+        margin-right: 40px;
+    }
+    .aboutproject__subtitle {
+        margin: 0 0 22px 0;
+    }
+    .aboutproject__text {
+        font-size: 12px;
+        line-height: 18px; 
+    }
+    .aboutproject__grid {
+        margin-top: 90px;
+    }
+}
+
+@media screen and (max-width:550px) {
+
+    .aboutproject {
+        margin: 70px 18px 70px;
+        max-width: 100%;
+    }
+    .aboutproject__textblock {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutproject__text-container {
+        margin-right: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+    }
+    .aboutproject__subtitle {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.72px;
+        margin: 0 0 16px 0;
+    }
+    .aboutproject__text {
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 55px;
+    }
+    .aboutproject__grid {
+        margin-top: 0px;
+        grid-template-columns: 35% 65%;
+        row-gap: 0px;
+    }
+    .aboutproject__gridcell {
+        height: 35px;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}

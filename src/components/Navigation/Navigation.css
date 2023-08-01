@@ -1,0 +1,83 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-align: right;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+    align-items: center;
+}
+.navigation__item {
+    margin-left: 20px;
+}
+.navigation__item:last-of-type {
+    margin-left: 50px;
+}
+.navigation__icon {
+    margin:0;
+    border-radius: 50px;
+    background: #313131;
+    width: 26px;
+    height: 26px;
+    background-image: url('../../images/acc-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.navigation__button {
+    width: 100px;
+    height: 32px;
+    border-radius: 40px;
+    background: #202020;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    padding: 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 12px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+
+}
+.navigation__button-text {
+    margin-left: 8px;
+}
+.navigation__modal-button {
+    height: 44px;
+    width: 44px;
+    border: 0;
+    background-color: inherit;
+    padding: 0;
+    cursor: pointer;
+    display: none;
+}
+.navigation__menu-icon {
+    background-image: url('../../images/menu-icon.svg');
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    color:#FFF;
+}
+
+@media screen and (max-width:768px) {
+    .navigation__modal-button {
+        display: flex;
+    }
+    .navigation {
+        display: none;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .navigation__modal-button {
+        height: 43px;
+        width: 40px;
+    }
+    .navigation__menu-icon {
+    }
+}

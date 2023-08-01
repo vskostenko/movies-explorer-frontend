@@ -1,0 +1,136 @@
+.aboutme {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 110px 70px 101px;
+    background: #202020;
+    max-width: 100%;
+}
+.aboutme__header {
+    margin:0 auto;
+    width: 100%;
+}
+.aboutme__name {
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px; /* 116% */
+    letter-spacing: -2px;
+    margin: 0;
+}
+.aboutme__prof {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 111.111% */
+    margin: 18px 0 26px;
+}
+.aboutme__bio {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    margin: 0 0 99px;
+}
+.aboutme_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 58px;
+    width: 100%;
+}
+.aboutme__textblock {
+    max-width: 600px;
+    padding-right: 14px;
+}
+.aboutme__photo {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+}
+.aboutme__git {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: #fff;
+}
+
+@media screen and (max-width:768px) {
+    .aboutme {
+        margin: 90px 50px 91px;
+    }
+    .aboutme__name {
+        font-size: 40px;
+        line-height: 40px; /* 100% */
+        letter-spacing: -1.6px;
+    }
+    .aboutme__photo {
+        width: 255px;
+        height: 307px;
+    }
+    .aboutme_container {
+        margin-top: 58px;
+    }
+    .aboutme__prof {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px; /* 150% */
+        margin: 16px 0 20px;
+    }
+    .aboutme__bio {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 87px;
+    }
+    .aboutme__textblock {
+        max-width: 364px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .aboutme {
+        margin: 82px 14px 70px;
+    }
+    .aboutme_container {
+        margin-top: 52px;
+        flex-direction: column-reverse;
+    }
+    .aboutme__photo {
+        margin: 10px auto;
+        width: 272px;
+        height: 342px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        object-fit: cover;
+    }
+    .aboutme__textblock {
+        max-width: 100%;
+        margin: 40 auto;
+        padding-right: 0px;
+    }
+    .aboutme__name {
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -1.2px;
+    }
+    .aboutme__prof {
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        margin: 20px 0 20px;
+    }
+    .aboutme__bio {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 0 40px;
+    }
+}

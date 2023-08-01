@@ -1,0 +1,35 @@
+.header {
+    background-color: #073042;
+    max-width: 1280px;
+    height: 74px;
+    display: flex;
+    flex-direction: row;
+}
+.header_black {
+    background-color: inherit;
+}
+.header__container {
+    display: flex;
+    width: 100%;
+    max-width: 1140px;
+    height: 74px;
+    margin: 0px 70px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+@media screen and (max-width:768px) {
+
+    .header__container {
+        margin: 0px 30px;
+    }
+
+}
+@media screen and (max-width:500px) {
+
+    .header__container {
+        margin: 0px 14px;
+    }
+
+}

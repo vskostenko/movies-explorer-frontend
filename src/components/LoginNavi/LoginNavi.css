@@ -1,0 +1,50 @@
+.loginnavi__login {
+    width: 183px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.loginnavi__button {
+    border:0;
+    padding: 8px 20px;
+    border-radius: 3px;
+    background: #3DDC84;
+    margin-left: 0px;
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+.loginnavi__link {
+    color: #fff;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-decoration: none;
+}
+@media screen and (max-width:400px) {
+    .loginnavi__login {
+        width: 132px;
+    }
+    .loginnavi__button {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        width: 54px;
+        height: 26px;
+        padding: 5px 12px;
+    }
+    .loginnavi__link {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px; 
+    }
+}
+
