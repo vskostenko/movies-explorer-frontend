@@ -9,11 +9,21 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import MenuModal from "../Header/MenuModal/MenuModal";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import getMovies from "../../utils/MoviesApi";
 
 function App() {
 
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
+    const [allMovies, setAllMovies] = useState([]);
 
+    useEffect(() => {
+        handleSearch()
+    }, []);
+
+    function handleSearch () {
+        getMovies().then ((data)=>{setAllMovies(data)});
+        console.log(allMovies);
+    }
     function openMenuModal () {
         setModalMenuOpen(true);
         console.log('click');
