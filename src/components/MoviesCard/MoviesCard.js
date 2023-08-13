@@ -1,19 +1,18 @@
 import React from "react";
 import favIcon from "../../images/fav_icon_on.png";
 import "./MoviesCard.css";
-import image from "../../images/sample-image.png";
 
-function MoviesCard () {
+function MoviesCard (props) {
     return (
         <li className="moviescard">
             <div className="moviescard__header">
                 <div className="moviescard__text">
-                    <h3 className="moviescard__name">33 слова о дизайне</h3>
-                    <p className="moviescard__duration">1ч 47м</p>
+                    <h3 className="moviescard__name">{props.movie.nameRU}</h3>
+                    <p className="moviescard__duration"> {Math.trunc(props.movie.duration/60)} ч {props.movie.duration % 60} м</p>
                </div>
                <img className="moviescard__icon" src={ favIcon } alt="favorite"/>
             </div>
-            <img src={ image } alt="moviecard" />
+            <img src={'https://api.nomoreparties.co' + props.movie.image.url} alt="moviecard" />
         </li>
     )
 }

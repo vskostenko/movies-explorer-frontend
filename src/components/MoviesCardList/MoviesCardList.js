@@ -1,17 +1,14 @@
 import React from "react";
-import Movies from "../Movies/Movies";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
-function MoviesCardList () {
+function MoviesCardList (props) {
     return (
         <section className="moviescardlist">
             <ul className="moviescardlist__grid">
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
+                {props.allMovies.map((movie) => {
+			        return <MoviesCard movie={movie} />
+		        })}
             </ul>
             <button className="moviescardlist__button">
                 Ещё

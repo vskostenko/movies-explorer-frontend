@@ -9,7 +9,8 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import MenuModal from "../Header/MenuModal/MenuModal";
 import ErrorPage from "../ErrorPage/ErrorPage";
-import getMovies from "../../utils/MoviesApi";
+import moviesApi from "../../utils/MoviesApi";
+
 
 function App() {
 
@@ -17,20 +18,21 @@ function App() {
     const [allMovies, setAllMovies] = useState([]);
 
     useEffect(() => {
-        handleSearch()
+        moviesApi.getMovies().then((data)=>{
+            setAllMovies(data);
+        })
+        .catch((err) => {
+            console.log(`Ошибка ${err}`)
+        })
     }, []);
 
-    function handleSearch () {
-        getMovies().then ((data)=>{setAllMovies(data)});
-        console.log(allMovies);
-    }
     function openMenuModal () {
         setModalMenuOpen(true);
-        console.log('click');
     }; 
     function closeMenuModal () {
         setModalMenuOpen(false);
     };
+
     return (
         <BrowserRouter>
             <div className="page">
@@ -41,8 +43,9 @@ function App() {
                     <Route path="/error" element={<ErrorPage/>} />
                     <Route path="/movies" 
                         element={<Movies 
-                            onModalMenuClick={openMenuModal}
-                            onModalMenuClose={closeMenuModal}
+                            onModalMenuClick = {openMenuModal}
+                            onModalMenuClose = {closeMenuModal}
+                            allMovies = {allMovies}
                         />} 
                     />
                     <Route path="/saved-movies" 

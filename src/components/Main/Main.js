@@ -8,7 +8,6 @@ import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer"
 
 function Main (props) {
-  console.log(props.onModalMenuClick);
     return (
       <main>
         <Header />

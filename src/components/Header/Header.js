@@ -8,7 +8,6 @@ import LoginNavi from "../LoginNavi/LoginNavi";
 
 function Header(props) {
     let { pathname } = useLocation();
-    console.log(props.onModalMenuClick);
     return (
         <>
             <header  className={ pathname === '/' ? 'header' : 'header header_black'}>
