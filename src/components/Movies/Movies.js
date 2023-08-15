@@ -4,18 +4,40 @@ import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 
 function Movies (props) {
 
-    const [searchWord, setSearchWord] = useState('');
+    const [ filteredMovies, setfilteredMovies ] = useState([]);
+    const [ searchWord, setSearchWord ] = useState('');
     useEffect (() => {
-        console.log(searchWord);
+        console.log(props.allMovies);
+        searchWordInArray(searchWord,props.allMovies);
+        setfilteredMovies (searchWordInArray(searchWord,props.allMovies));
         }, [searchWord]
-    )
+    );
+    function searchWordInArray(word, array) {
+        // Преобразуем слово в нижний регистр для поиска без учета регистра
+        const searchWord = word.toLowerCase();
+        
+        // Используем метод filter для фильтрации массива объектов
+        const filteredArray = array.filter(obj => {
+        // Проверяем, содержит ли значение свойства объекта искомое слово
+        for (let key in obj) {
+        if (typeof obj[key] === 'string' && obj[key].toLowerCase().includes(searchWord)) {
+        return true;
+        }
+        }
+        return false;
+        });
+        
+        return filteredArray;
+    }
 
 function handleSearch (data) {
         setSearchWord(data.searchField);
         console.log(searchWord);
+        
     }
     return (
         <>
@@ -25,8 +47,9 @@ function handleSearch (data) {
             <SearchForm 
                 onSubmit = { handleSearch } 
             />
+            <Preloader />
             <MoviesCardList 
-                allMovies = { props.allMovies }
+                allMovies = { filteredMovies }
             />
             <Footer />
         </>

@@ -52,6 +52,7 @@ function App() {
                         element={<Movies 
                             onModalMenuClick={openMenuModal}
                             onModalMenuClose={closeMenuModal}
+                            allMovies={allMovies}
                         />} 
                     />
                     <Route index element={<Main />} />
