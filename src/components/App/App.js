@@ -15,16 +15,9 @@ import moviesApi from "../../utils/MoviesApi";
 function App() {
 
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
-    const [allMovies, setAllMovies] = useState([]);
+    const [ savedMoves, setSavedMovies ] = useState([]);
 
-    useEffect(() => {
-        moviesApi.getMovies().then((data)=>{
-            setAllMovies(data);
-        })
-        .catch((err) => {
-            console.log(`Ошибка ${err}`)
-        })
-    }, []);
+
 
     function openMenuModal () {
         setModalMenuOpen(true);
@@ -45,14 +38,13 @@ function App() {
                         element={<Movies 
                             onModalMenuClick = {openMenuModal}
                             onModalMenuClose = {closeMenuModal}
-                            allMovies = {allMovies}
                         />} 
                     />
                     <Route path="/saved-movies" 
                         element={<Movies 
                             onModalMenuClick={openMenuModal}
                             onModalMenuClose={closeMenuModal}
-                            allMovies={allMovies}
+                            allMovies={savedMoves}
                         />} 
                     />
                     <Route index element={<Main />} />
