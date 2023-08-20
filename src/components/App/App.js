@@ -9,15 +9,22 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import MenuModal from "../Header/MenuModal/MenuModal";
 import ErrorPage from "../ErrorPage/ErrorPage";
-import moviesApi from "../../utils/MoviesApi";
+import { useLocalStorage } from "../../utils/userLocalStorage";
 
 
 function App() {
 
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
-    const [ savedMoves, setSavedMovies ] = useState([]);
-
-
+    const [ isShortMovies, setIsShortMovies ] = useState(()=> {
+        const checked = localStorage.getItem('checked');
+        console.log(checked);
+        return JSON.parse(checked) || undefined;
+    });
+    const [ savedMovies, setSavedMovies ] = useState(()=> {
+        const movies = localStorage.getItem('filteredData');
+        const initalMovies = JSON.parse(movies);
+        return initalMovies || "";
+    });
 
     function openMenuModal () {
         setModalMenuOpen(true);
@@ -25,6 +32,10 @@ function App() {
     function closeMenuModal () {
         setModalMenuOpen(false);
     };
+    function checkboxHandler () {
+        setIsShortMovies(!isShortMovies);
+        localStorage.setItem("checked",!isShortMovies);
+    }
 
     return (
         <BrowserRouter>
@@ -38,13 +49,16 @@ function App() {
                         element={<Movies 
                             onModalMenuClick = {openMenuModal}
                             onModalMenuClose = {closeMenuModal}
+                            isShortMovies={isShortMovies}
+                            checkboxHandler={checkboxHandler}
+                            allMovies={savedMovies}
                         />} 
                     />
                     <Route path="/saved-movies" 
                         element={<Movies 
                             onModalMenuClick={openMenuModal}
                             onModalMenuClose={closeMenuModal}
-                            allMovies={savedMoves}
+                            allMovies={savedMovies}
                         />} 
                     />
                     <Route index element={<Main />} />

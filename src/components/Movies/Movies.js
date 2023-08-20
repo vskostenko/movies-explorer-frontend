@@ -6,13 +6,18 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import moviesApi from "../../utils/MoviesApi";
-import { Async } from "react-async";
-import { set } from "react-hook-form";
 
 function Movies (props) {
 
-    const [ filteredMovies, setfilteredMovies ] = useState([]);
-    const [ searchWord, setSearchWord ] = useState('');
+    const [ filteredMovies, setfilteredMovies ] =  useState(()=> {
+        const movies = localStorage.getItem('filteredData');
+        const initalMovies = JSON.parse(movies);
+        return initalMovies || "";
+    });
+    const [ searchWord, setSearchWord ] = useState(()=> {
+        const word = localStorage.getItem('searchWord');
+        return word || "";
+    });
     const [ isLoading, setIsLoading ] = useState(false);
 
 function searchWordInArray(word, array) {
@@ -34,15 +39,19 @@ function searchWordInArray(word, array) {
 
 function handleSearch (inputs) {
         setIsLoading(true);
-        setSearchWord(inputs.searchField);  
+        setSearchWord(inputs.searchField);
+        localStorage.setItem('searchWord', inputs.searchField);  
         moviesApi.getMovies()
             .then((data)=>{  
+
                 const filteredData = searchWordInArray(searchWord,data);
                 console.log(filteredData);
                 if (filteredData.length > 0 ) {
-                    setfilteredMovies (filteredData)
+                    setfilteredMovies (filteredData);
+                    localStorage.setItem('filteredData', JSON.stringify(filteredData));
                 } else {
                     console.log('error');
+                    setfilteredMovies([]);
                 }
             })
             .catch((err) => {console.log(`Ошибка ${err}`)})
@@ -54,10 +63,16 @@ function handleSearch (inputs) {
                 onModalMenuClick = { props.onModalMenuClick }
             />
             <SearchForm 
-                onSubmit = { handleSearch } 
+                isShortMovies={props.isShortMovies}
+                checkboxHandler={props.checkboxHandler}
+                onSubmit = { handleSearch }
+                searchWord = { searchWord }
             />
             { isLoading && <Preloader /> }            
-            <MoviesCardList allMovies = { filteredMovies }/> 
+            <MoviesCardList 
+                allMovies = { filteredMovies }
+                isShortMovies={props.isShortMovies}
+            /> 
             <Footer />
         </>
     )

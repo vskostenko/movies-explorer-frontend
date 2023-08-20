@@ -5,6 +5,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm (props) {
 
+
     const {
         register,
         handleSubmit,
@@ -22,6 +23,7 @@ function SearchForm (props) {
                 onSubmit={handleSubmit(onSubmit)}
                 >
                 <input 
+                    defaultValue={props.searchWord}
                     {...register("searchField", { required: true })} 
                     className="searchform__field" 
                 />
@@ -32,7 +34,10 @@ function SearchForm (props) {
                     value=" "
                 />
             </form>
-            <FilterCheckbox />
+            <FilterCheckbox 
+                isShortMovies={props.isShortMovies}
+                checkboxHandler={props.checkboxHandler}
+            />
         </div>
     )
 }
