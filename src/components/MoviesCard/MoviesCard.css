@@ -36,6 +36,13 @@
     width: 100%;
 }
 
+.moviescard__button {
+    background-color: inherit;
+    border: 0;
+    padding: 0;
+    margin:0
+}
+
 @media screen and (max-width:768px) {
     .moviescard {
         height: 258px;

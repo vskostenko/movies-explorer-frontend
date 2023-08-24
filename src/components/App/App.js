@@ -17,7 +17,6 @@ function App() {
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
     const [ isShortMovies, setIsShortMovies ] = useState(()=> {
         const checked = localStorage.getItem('checked');
-        console.log(checked);
         return JSON.parse(checked) || undefined;
     });
     const [ savedMovies, setSavedMovies ] = useState(()=> {
