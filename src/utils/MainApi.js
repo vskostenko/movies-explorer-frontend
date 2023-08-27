@@ -11,13 +11,24 @@ class MainApi {
       }
     } 
     createMovie(movie) {
-    console.log(movie);
-    return fetch(`${this._baseUrl}/movies`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify (movie),
-    }).then((res) => this._handleResponse(res));
-  }
+        return fetch(`${this._baseUrl}/movies`, {
+        method: "POST",
+        headers: this._headers,
+        body: JSON.stringify (movie),
+        }).then((res) => this._handleResponse(res));
+    }
+    removeMovie(id) {
+        return fetch(`${this._baseUrl}/movies/${id}`, {
+        method: "DELETE",
+        headers: this._headers,
+        }).then((res) => this._handleResponse(res));
+    }
+    getMovies() {
+        return fetch(`${this._baseUrl}/movies`, {
+            method: "GET",
+            headers: this._headers,
+        }).then((res) => this._handleResponse(res));
+    }
 }
 
 const mainApiConfig = {

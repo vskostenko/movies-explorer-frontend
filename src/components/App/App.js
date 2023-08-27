@@ -9,7 +9,10 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import MenuModal from "../Header/MenuModal/MenuModal";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Preloader from "../Preloader/Preloader";
 import { useLocalStorage } from "../../utils/userLocalStorage";
+import mainApi from "../../utils/MainApi";
+import { MOVIES_SERVER_URL } from "../../utils/constants";
 
 
 function App() {
@@ -19,12 +22,12 @@ function App() {
         const checked = localStorage.getItem('checked');
         return JSON.parse(checked) || undefined;
     });
-    const [ savedMovies, setSavedMovies ] = useState(()=> {
+    const [ searchedMovies, setSearchedMovies ] = useState(()=> {
         const movies = localStorage.getItem('filteredData');
         const initalMovies = JSON.parse(movies);
         return initalMovies || "";
     });
-
+    const [ savedMovies, setSavedMovies ] = useState([]);
     function openMenuModal () {
         setModalMenuOpen(true);
     }; 
@@ -50,14 +53,18 @@ function App() {
                             onModalMenuClose = {closeMenuModal}
                             isShortMovies={isShortMovies}
                             checkboxHandler={checkboxHandler}
-                            allMovies={savedMovies}
-                        />} 
+                            movies={searchedMovies}
+                            savedMovies={savedMovies}
+                            />
+                        }
                     />
                     <Route path="/saved-movies" 
                         element={<Movies 
                             onModalMenuClick={openMenuModal}
                             onModalMenuClose={closeMenuModal}
-                            allMovies={savedMovies}
+                            movies={savedMovies}
+                            isShortMovies={isShortMovies}
+                            checkboxHandler={checkboxHandler}
                         />} 
                     />
                     <Route index element={<Main />} />

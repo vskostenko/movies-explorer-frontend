@@ -36,7 +36,12 @@ function MoviesCardList (props) {
             <ul className="moviescardlist__grid">
                 {
                 checkedMovies.slice(0, itemCount).map((movie) => {
-			        return <MoviesCard movie={movie} />
+			        return <MoviesCard 
+                                movie={movie}
+                                onSaveMovie={props.onSaveMovie}
+                                onRemoveMovie={props.onRemoveMovie}
+                                savedMovies={props.savedMovies}
+                            />
 		        })}
             </ul>
             { props.allMovies.length > itemCount && 
