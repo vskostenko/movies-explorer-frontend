@@ -11,6 +11,7 @@ function MoviesCardList (props) {
     const [checkedMovies, setCheckedMovies] = useState ([]);
 
     useEffect (()=> {
+            console.log(props.allMovies);
             const movies = props.allMovies.filter ((movie) => {
                 if (!props.isShortMovies  && movie.duration < 40 ) return false
                 else return true;
@@ -41,6 +42,7 @@ function MoviesCardList (props) {
                                 onSaveMovie={props.onSaveMovie}
                                 onRemoveMovie={props.onRemoveMovie}
                                 savedMovies={props.savedMovies}
+                                key={movie.id || movie._id} 
                             />
 		        })}
             </ul>

@@ -13,28 +13,75 @@ class MainApi {
     createMovie(movie) {
         return fetch(`${this._baseUrl}/movies`, {
         method: "POST",
-        headers: this._headers,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify (movie),
         }).then((res) => this._handleResponse(res));
     }
     removeMovie(id) {
         return fetch(`${this._baseUrl}/movies/${id}`, {
         method: "DELETE",
-        headers: this._headers,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json'
+        }
         }).then((res) => this._handleResponse(res));
     }
     getMovies() {
         return fetch(`${this._baseUrl}/movies`, {
             method: "GET",
-            headers: this._headers,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json'
+            }
         }).then((res) => this._handleResponse(res));
     }
+    register(userdata) {
+        return fetch(`${this._baseUrl}/signup`, {
+          method: 'POST',
+          headers: this._headers,
+          body: JSON.stringify({ 
+            name: userdata.name,
+            email:userdata.email, 
+            password: userdata.password 
+        }),
+        }).then((res) => this._handleResponse(res));
+      }
+    login(userdata) {
+        return fetch(`${this._baseUrl}/signin`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ 
+            email:userdata.email, 
+            password: userdata.password 
+        }),
+        }).then((res) => this._handleResponse(res));
+      }
+    editUserInfo(data) {
+        console.log(data);
+        return fetch(`${this._baseUrl}/users/me`, {
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify(data),
+        }).then((res) => this._handleResponse(res));
+    }
+     checkToken () {
+        return fetch(`${this._baseUrl}/users/me`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => this._handleResponse(res));
+     }
 }
-
 const mainApiConfig = {
     baseUrl: 'https://api.kinoman.nomoreparties.sbs',
     headers: {
-        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU0NjcxMGFjODVhM2QzZWZjMzVmMDYiLCJpYXQiOjE2OTI2OTAyMTIsImV4cCI6MTY5MzI5NTAxMn0.0mg4nRKWWcKfN-mUVa4DBYKOui-Y9K0mS2wsLMkTVis',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         'Content-Type': 'application/json'
     }
   }

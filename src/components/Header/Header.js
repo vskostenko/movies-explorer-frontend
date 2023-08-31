@@ -15,11 +15,11 @@ function Header(props) {
                     <Link to="/movies" className="Link"> 
                         <Logo />
                     </Link>
-                    { pathname ==='/' 
-                        ? <LoginNavi /> 
-                        : <Navigation 
+                    { props.loggedIn
+                        ? <Navigation 
                             onModalMenuClick={props.onModalMenuClick}
                         /> 
+                        : <LoginNavi />
                     }
                 </div>
             </header>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
@@ -10,13 +10,24 @@ import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { MOVIES_SERVER_URL } from "../../utils/constants";
 
-
 function Movies (props) {
     const [ savedMovies, setSavedMovies ] = useState([]);
+    useEffect(()=> {
+        if (props.loggedIn) {
+            mainApi.getMovies()
+            .then ((movies) => {
+                setSavedMovies(movies);
+                setIsLoading(false);
+                console.log(movies);
+            })
+            .catch((err) => console.log(err))
+        }
+    },[]);
+
     const [ filteredMovies, setfilteredMovies ] =  useState(()=> {
         const movies = localStorage.getItem('filteredData');
         const initalMovies = JSON.parse(movies);
-        return initalMovies || "";
+        return initalMovies || [];
     });
     const [ searchWord, setSearchWord ] = useState(()=> {
         const word = localStorage.getItem('searchWord');
@@ -24,14 +35,7 @@ function Movies (props) {
     });
     const [ isLoading, setIsLoading ] = useState(true);
     let { pathname } = useLocation();
-    useEffect (() => {
-        mainApi.getMovies()
-        .then ((movies) => {
-            setSavedMovies(movies);
-            setIsLoading(false);
-        })
-        .catch((err) => console.log(err));
-    },[])
+
 
 
 function searchWordInArray(word, array) {
@@ -90,14 +94,10 @@ function handleSearch (inputs) {
         .catch((err)=> console.log(err))       
     }
     function removeMoviefromSaved (movie) {
-        console.log(movie);
-        console.log(savedMovies);
-
         const savedMovieId = savedMovies.find((item) => item.movieId === (movie.movieId ?? movie.id))._id;
         mainApi
         .removeMovie(savedMovieId)
         .then(() => {
-            
           setSavedMovies((movies) =>
             movies.filter((item) => item._id !== savedMovieId)
           );
@@ -109,6 +109,7 @@ function handleSearch (inputs) {
         <>
             <Header 
                 onModalMenuClick = { props.onModalMenuClick }
+                loggedIn = {props.loggedIn}
             />
             <SearchForm 
                 isShortMovies={props.isShortMovies}

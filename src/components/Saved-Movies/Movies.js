@@ -9,6 +9,7 @@ function SavedMovies (props) {
         <>
             <Header 
                 onModalMenuClick={props.onModalMenuClick}
+                
             />
             <SearchForm />
             <MoviesCardList />

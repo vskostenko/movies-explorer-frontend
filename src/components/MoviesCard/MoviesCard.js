@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 
 function MoviesCard ({movie,onSaveMovie,onRemoveMovie,savedMovies}) {
     const [saveStatus, setSaveStatus] = useState(()=>{
-        console.log(movie);
         return savedMovies.some((item) => item.movieId === movie.id)
     });
     let { pathname } = useLocation();
@@ -20,7 +19,6 @@ function MoviesCard ({movie,onSaveMovie,onRemoveMovie,savedMovies}) {
         setSaveStatus(!saveStatus);
     }
     function removeMovieHandle () {
-        console.log(movie);
         onRemoveMovie(movie);
         setSaveStatus(false);
     }
