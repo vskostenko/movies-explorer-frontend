@@ -4,12 +4,17 @@ import favIconOff from "../../images/fav_icon_off.svg";
 import removeIcon from "../../images/del_icon.svg";
 import "./MoviesCard.css";
 import { MOVIES_SERVER_URL} from "../../utils/constants";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 function MoviesCard ({movie,onSaveMovie,onRemoveMovie,savedMovies}) {
     const [saveStatus, setSaveStatus] = useState(()=>{
         return savedMovies.some((item) => item.movieId === movie.id)
     });
+    useEffect(()=> {
+
+    })
+
+
     let { pathname } = useLocation();
 
     function saveMovieHandle () {
@@ -40,7 +45,9 @@ function MoviesCard ({movie,onSaveMovie,onRemoveMovie,savedMovies}) {
                         </button>                        
                 }
             </div>
-            <img className="" src={!movie.image.url ? movie.image : MOVIES_SERVER_URL + movie.image.url} alt={movie.nameRU} /> 
+            <a className="moviescard__trailerlink link" href={movie.trailerLink} target="_blank" rel="noreferrer">
+                <img className="moviescard__image" src={!movie.image.url ? movie.image : MOVIES_SERVER_URL + movie.image.url} alt={movie.nameRU} />
+            </a>
         </li>
     )
 }

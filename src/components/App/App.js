@@ -11,10 +11,23 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../../utils/ProtectedRoute";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
-
+    const [loggedIn,setLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
+    const [ savedMovies, setSavedMovies ] = useState([]);
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
+    
+    useEffect(()=> {
+        if (loggedIn) {
+            mainApi.getMovies()
+            .then ((movies) => {
+                setSavedMovies(movies);
+            })
+            .catch((err) => console.log(err))
+        }
+    },[loggedIn]);
     const [ isShortMovies, setIsShortMovies ] = useState(()=> {
         const checked = localStorage.getItem('checked');
         return JSON.parse(checked) || undefined;
@@ -24,8 +37,6 @@ function App() {
         const initalMovies = JSON.parse(movies);
         return initalMovies || "";
     });
-    const [loggedIn,setLoggedIn] = useState(false);
-    const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
@@ -99,6 +110,27 @@ function App() {
           email: '',
         });
     }
+    function removeMoviefromSaved (movie) {
+        const savedMovieId = savedMovies.find((item) => item.movieId === (movie.movieId ?? movie.id))._id;
+        console.log(savedMovieId);
+        mainApi
+        .removeMovie(savedMovieId)
+        .then(() => {
+            const newMoviesList = savedMovies.filter((item) => {
+                console.log(item._id);
+                if (savedMovieId === item._id) {
+                return false
+                } else {
+                return true
+                }
+            });
+            console.log(newMoviesList);
+            setSavedMovies(newMoviesList);
+            console.log(savedMovies);
+
+        })
+        .catch((err)=> console.log(err))       
+    }
     return (
         <CurrentUserContext.Provider value={{currentUser,setCurrentUser}}>
             <BrowserRouter>
@@ -136,6 +168,9 @@ function App() {
                                         checkboxHandler={checkboxHandler}
                                         movies={searchedMovies}
                                         loggedIn={loggedIn}
+                                        savedMovies={savedMovies}
+                                        setSavedMovies={setSavedMovies}
+                                        onRemoveMovie={removeMoviefromSaved}
                                     />
                                 </ProtectedRoute>
                             }
@@ -143,12 +178,15 @@ function App() {
                         <Route path="/saved-movies" 
                             element={
                             <ProtectedRoute loggedIn={loggedIn}>
-                            <Movies 
+                            <SavedMovies 
                                 onModalMenuClick={openMenuModal}
                                 onModalMenuClose={closeMenuModal}
                                 isShortMovies={isShortMovies}
                                 checkboxHandler={checkboxHandler}
                                 loggedIn={loggedIn}
+                                savedMovies={savedMovies}
+                                setSavedMovies={setSavedMovies}
+                                onRemoveMovie={removeMoviefromSaved}
                             />
                             </ProtectedRoute>
                             } 

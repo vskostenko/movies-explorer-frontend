@@ -9,59 +9,31 @@ import Preloader from "../Preloader/Preloader";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { MOVIES_SERVER_URL } from "../../utils/constants";
+import searchWordInArray from "../../utils/searchWordInArray";
 
 function Movies (props) {
-    const [ savedMovies, setSavedMovies ] = useState([]);
-    useEffect(()=> {
-        if (props.loggedIn) {
-            mainApi.getMovies()
-            .then ((movies) => {
-                setSavedMovies(movies);
-                setIsLoading(false);
-                console.log(movies);
-            })
-            .catch((err) => console.log(err))
-        }
-    },[]);
 
     const [ filteredMovies, setfilteredMovies ] =  useState(()=> {
         const movies = localStorage.getItem('filteredData');
         const initalMovies = JSON.parse(movies);
         return initalMovies || [];
     });
+
     const [ searchWord, setSearchWord ] = useState(()=> {
         const word = localStorage.getItem('searchWord');
         return word || "";
     });
-    const [ isLoading, setIsLoading ] = useState(true);
+
+    const [ isLoading, setIsLoading ] = useState(false);
     let { pathname } = useLocation();
-
-
-
-function searchWordInArray(word, array) {
-        // Преобразуем слово в нижний регистр для поиска без учета регистра
-        const searchWord = word.toLowerCase();
-        
-        // Используем метод filter для фильтрации массива объектов
-        const filteredArray = array.filter(obj => {
-        // Проверяем, содержит ли значение свойства объекта искомое слово
-        for (let key in obj) {
-        if (typeof obj[key] === 'string' && obj[key].toLowerCase().includes(searchWord)) {
-        return true;
-        }
-        }
-        return false;
-        });     
-        return filteredArray;
-    }
 
 function handleSearch (inputs) {
         setIsLoading(true);
-        setSearchWord(inputs.searchField);
-        localStorage.setItem('searchWord', inputs.searchField);  
+        localStorage.setItem('searchWord', searchWord);
+
         moviesApi.getMovies()
-            .then((data)=>{  
-                const filteredData = searchWordInArray(searchWord,data);
+            .then((moviesArray)=>{
+                const filteredData = searchWordInArray(moviesArray, searchWord)
                 console.log(filteredData);
                 if (filteredData.length > 0 ) {
                     setfilteredMovies (filteredData);
@@ -69,11 +41,15 @@ function handleSearch (inputs) {
                 } else {
                     console.log('error');
                     setfilteredMovies([]);
+                    localStorage.setItem('filteredData', JSON.stringify(filteredData));
                 }
             })
             .catch((err) => {console.log(`Ошибка ${err}`)})
-            .finally(() => {setIsLoading(false)})
-    }
+            .finally(() => {
+                setIsLoading(false);
+           })
+}
+
     function addMovieToSaved (movie) {
         mainApi.createMovie(
             {   
@@ -90,47 +66,35 @@ function handleSearch (inputs) {
                 nameEN: movie.nameEN,
             }
         )
-        .then((newMovie) => setSavedMovies ([...savedMovies, newMovie]))
+        .then((newMovie) => props.setSavedMovies ([...props.savedMovies, newMovie]))
         .catch((err)=> console.log(err))       
     }
-    function removeMoviefromSaved (movie) {
-        const savedMovieId = savedMovies.find((item) => item.movieId === (movie.movieId ?? movie.id))._id;
-        mainApi
-        .removeMovie(savedMovieId)
-        .then(() => {
-          setSavedMovies((movies) =>
-            movies.filter((item) => item._id !== savedMovieId)
-          );
-        })
-        .catch((err)=> console.log(err))       
+    function updateSearchWord (event) {
+        setSearchWord(event.target.value);
     }
-
     return (
         <>
             <Header 
                 onModalMenuClick = { props.onModalMenuClick }
                 loggedIn = {props.loggedIn}
             />
-            <SearchForm 
-                isShortMovies={props.isShortMovies}
-                checkboxHandler={props.checkboxHandler}
-                onSubmit = { handleSearch }
-                searchWord = { searchWord }
-            />
+
+                <SearchForm 
+                    isShortMovies={props.isShortMovies}
+                    checkboxHandler={props.checkboxHandler}
+                    onSubmit = { handleSearch } 
+                    searchWord = { searchWord }
+                    onInputChange = {updateSearchWord}
+                />
+        
             { !isLoading 
-                ?    pathname ==='/saved-movies' 
-                        ?   <MoviesCardList 
-                                allMovies = { savedMovies }
-                                isShortMovies={ props.isShortMovies }
-                                savedMovies={savedMovies}
-                                onRemoveMovie={removeMoviefromSaved}
-                            /> 
-                        :   <MoviesCardList 
+                ?     
+                            <MoviesCardList 
                                 allMovies = { filteredMovies }
                                 isShortMovies={ props.isShortMovies }
                                 onSaveMovie={addMovieToSaved}
-                                onRemoveMovie={removeMoviefromSaved}
-                                savedMovies={savedMovies}
+                                onRemoveMovie={props.onRemoveMovie}
+                                savedMovies={props.savedMovies}
                             />
                 : <Preloader />
             }

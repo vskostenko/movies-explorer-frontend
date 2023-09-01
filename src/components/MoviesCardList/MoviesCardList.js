@@ -11,13 +11,11 @@ function MoviesCardList (props) {
     const [checkedMovies, setCheckedMovies] = useState ([]);
 
     useEffect (()=> {
-            console.log(props.allMovies);
             const movies = props.allMovies.filter ((movie) => {
                 if (!props.isShortMovies  && movie.duration < 40 ) return false
                 else return true;
             })
             setCheckedMovies(movies);
-            console.log(props.allMovies);
         }, [props.isShortMovies, props.allMovies])
 
     function buttonHandler () {
