@@ -9,9 +9,14 @@ import { EMAIL_REGEX } from "../../utils/constants";
 
 function Profile (props) {
     const { currentUser } = useContext(CurrentUserContext);
-    const { values,setValues, handleChange, errors, isValid }  = useFormWithValidation();
+    const { values, setValues, handleChange, errors, isValid, setIsValid }  = useFormWithValidation();
     const [ isInputActive, setIsInputActive ] = useState(false);
     const [ buttonCaption, setButtonCaption ] = useState('Редактровать');
+    useEffect(()=> {
+        if ( JSON.stringify(currentUser) === JSON.stringify(values)) {
+            setIsValid(false);
+        }
+    },[values])
     const navigate = useNavigate();
     useEffect(() => {
         setValues({
