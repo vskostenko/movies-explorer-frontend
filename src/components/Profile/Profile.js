@@ -26,10 +26,6 @@ function Profile (props) {
     function handleEdit (e) {
         e.preventDefault();
         if (!isInputActive) {
-            setValues({
-                email:'',
-                name:'',
-            })
             setIsInputActive(true);
             setButtonCaption('Сохранить');
         } else {
