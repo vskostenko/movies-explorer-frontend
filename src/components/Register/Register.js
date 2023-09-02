@@ -15,7 +15,6 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
             email: values.email,
             password: values.password
         }).then((res)=> {
-            console.log(res);
             handleLogin({
                 email: values.email,
                 password: values.password,
@@ -77,10 +76,13 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
                     />
                     <div className="register__error" id="email-error">{errors.password}</div>
                     <input 
-                        className="register__button"
+                        className={isValid 
+                            ? "register__button"
+                            : "register__button register__button_disabled"}
                         type="submit"
                         value="Зарегистрироваться"
                         onSubmit={handleSubmit}
+                        disabled={!isValid}
                     />
                 </form>
                 <p className='register__signin'>Уже зарегистрированы?

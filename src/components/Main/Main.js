@@ -10,7 +10,11 @@ import Footer from "../Footer/Footer"
 function Main (props) {
     return (
       <main>
-        <Header loggedIn={props.loggedIn}/>
+        <Header 
+          loggedIn={props.loggedIn}
+          onModalMenuClick = { props.onModalMenuClick }
+          onModalMenuClose = { props.onModalMenuClose }
+          />
         <Promo />
         <AboutProject />
         <Techs />

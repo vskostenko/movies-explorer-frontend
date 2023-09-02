@@ -12,7 +12,7 @@ function Header(props) {
         <>
             <header  className={ pathname === '/' ? 'header' : 'header header_black'}>
                 <div className="header__container">
-                    <Link to="/movies" className="Link"> 
+                    <Link to="/" className="Link"> 
                         <Logo />
                     </Link>
                     { props.loggedIn

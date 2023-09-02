@@ -7,12 +7,13 @@ import searchWordInArray from "../../utils/searchWordInArray";
 
 function SavedMovies ({
     onModalMenuClick,
+    onModalMenuClose,
     loggedIn,
     isShortMovies,
     checkboxHandler,
     removeMoviefromSaved,
     savedMovies,
-    onRemoveMovie
+    onRemoveMovie,
 }) {
     const [ filteredMoviesSaved, setfilteredMoviesSaved ] =  useState(savedMovies);
     const [ savedSearchWord, setSavedSearchWord ] = useState('');
@@ -30,6 +31,7 @@ function SavedMovies ({
         <>
             <Header 
                 onModalMenuClick = { onModalMenuClick }
+                onModalMenuClose = { onModalMenuClose }
                 loggedIn = { loggedIn }
             />
             <SearchForm 

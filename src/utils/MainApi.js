@@ -4,11 +4,7 @@ class MainApi {
       this._headers = options.headers;
     }
     _handleResponse(res) {
-      if (res.ok) {
-        return res.json();
-      } else {
-        Promise.reject(`Ошибка: ${res.status}`);
-      }
+        return res.ok ? res.json() : Promise.reject(res.status);
     } 
     createMovie(movie) {
         return fetch(`${this._baseUrl}/movies`, {
@@ -62,10 +58,12 @@ class MainApi {
         }).then((res) => this._handleResponse(res));
       }
     editUserInfo(data) {
-        console.log(data);
         return fetch(`${this._baseUrl}/users/me`, {
           method: "PATCH",
-          headers: this._headers,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json'
+        },
           body: JSON.stringify(data),
         }).then((res) => this._handleResponse(res));
     }

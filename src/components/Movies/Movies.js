@@ -74,8 +74,9 @@ function handleSearch (inputs) {
     }
     return (
         <>
-            <Header 
+            <Header
                 onModalMenuClick = { props.onModalMenuClick }
+                onModalMenuClose = { props.onModalMenuClose }
                 loggedIn = {props.loggedIn}
             />
 

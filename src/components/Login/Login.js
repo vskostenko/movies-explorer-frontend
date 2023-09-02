@@ -24,7 +24,7 @@ function Login ({handleLogin, loggedIn}) {
                     <h2 className="login__greet">Рады видеть!</h2>
                     <p className="login__field-caption">E-mail</p>
                     <input 
-                        className="login__field" 
+                        className="login__field"
                         type="email"
                         name="email" 
                         required 
@@ -61,10 +61,13 @@ function Login ({handleLogin, loggedIn}) {
                         {errors.password}
                     </div>
                     <input 
-                        className="login__button" 
+                        className={isValid 
+                            ? "login__button"
+                            : "login__button login__button_disabled"}
                         type="submit" 
                         value="Войти" 
                         onSubmit={handleSubmit}
+                        disabled={!isValid}
                     />
                 </form>
                 <p className='login__signin'>Ещё не зарегистрированы?

@@ -34,13 +34,22 @@ function Profile (props) {
             props.onUpdateUser({
                 name: values.name,
                 email: values.email,
-            })
+            });
+            setValues ({
+                name: currentUser.name,
+                email: currentUser.email,
+              })
+            setButtonCaption('Редактировать');
             setIsInputActive(false);
         }
     }
     return (
         <>
-            <Header loggedIn={props.loggedIn}/>
+            <Header 
+                loggedIn={props.loggedIn}
+                onModalMenuClick = { props.onModalMenuClick }
+                onModalMenuClose = { props.onModalMenuClose }                
+                />
             <form className="profile">
                 
                 <h3 className="profile__greet">Привет, {currentUser.name}</h3>

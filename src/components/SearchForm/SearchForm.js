@@ -13,16 +13,14 @@ function SearchForm (props) {
     const onSubmit = (data) => {
         props.onSubmit(data);
     };
-
-    
-
     return (
         <div className="searhform" >
             <form 
                 className="searchform__container"
                 onSubmit={handleSubmit(onSubmit)}
                 >
-                <input 
+                <input
+                    placeholder="Фильм"
                     defaultValue={props.searchWord}
                     {...register("searchField", { required: true })} 
                     className="searchform__field"

@@ -1,7 +1,7 @@
 import React, { useState,useEffect }  from "react";
 import "./App.css";
 import Main from "../Main/Main";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
@@ -12,12 +12,16 @@ import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../../utils/ProtectedRoute";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import InfoToolTip from "../InfoToolTip/InfoToolTip";
+import { errors } from "../../utils/errors";
 
 function App() {
     const [loggedIn,setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
+    const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
+    const [infoTooltipMsg, setInfoTooltipMsg] = useState(null);
     
     useEffect(()=> {
         if (loggedIn) {
@@ -37,7 +41,6 @@ function App() {
         const initalMovies = JSON.parse(movies);
         return initalMovies || "";
     });
-
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
@@ -46,8 +49,6 @@ function App() {
             handleLogout();
         }
       }, []);
-      
-
     function openMenuModal () {
         setModalMenuOpen(true);
     }; 
@@ -61,7 +62,6 @@ function App() {
     function checkToken() {
         mainApi.checkToken()
           .then((res) => {
-                console.log(res);
                 setLoggedIn(true);
                 setCurrentUser(res);
           })
@@ -69,34 +69,43 @@ function App() {
             console.log(err);
           });
     }
-    function handleRegister (userData){
-        console.log(userData);
+    function handleRegister (userData){;
         return mainApi.register(userData)
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            setInfoTooltipMsg(errors(err));
+            setInfoTooltipOpen(true);
+        })
     }
     function handleLogin (userData) {
         mainApi.login(userData)
         .then((res)=> {
-            console.log(res);
             if (res.token) {
                 localStorage.setItem('jwt', res.token);
                 checkToken();
-              }
+            } else {
+                handleLogout();
+            }
             })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            setInfoTooltipMsg(errors(err));
+            setInfoTooltipOpen(true);
+        })
     }
     function handleUpdateUserInfo(data) {
-        console.log(data);
             mainApi
               .editUserInfo(data)
               .then((user) => {
-                console.log(user);
                 setCurrentUser({
                   name: user.name,
                   email: user.email,
                 });
+                setInfoTooltipMsg(`Данные успешно изменены ${currentUser.name}`);
+                setInfoTooltipOpen(true);
               })              
-             .catch((err)=> console.log(err))
+              .catch((err)=> {
+                setInfoTooltipMsg(errors(err));
+                setInfoTooltipOpen(true);
+            })
           }
     function handleLogout() {
         localStorage.removeItem('jwt');
@@ -110,24 +119,22 @@ function App() {
           email: '',
         });
     }
+    function toolTipClose(){
+        setInfoTooltipOpen(false);
+    }
     function removeMoviefromSaved (movie) {
         const savedMovieId = savedMovies.find((item) => item.movieId === (movie.movieId ?? movie.id))._id;
-        console.log(savedMovieId);
         mainApi
         .removeMovie(savedMovieId)
         .then(() => {
             const newMoviesList = savedMovies.filter((item) => {
-                console.log(item._id);
                 if (savedMovieId === item._id) {
                 return false
                 } else {
                 return true
                 }
             });
-            console.log(newMoviesList);
             setSavedMovies(newMoviesList);
-            console.log(savedMovies);
-
         })
         .catch((err)=> console.log(err))       
     }
@@ -155,9 +162,10 @@ function App() {
                              loggedIn={loggedIn} 
                              onLogout={handleLogout}
                              onUpdateUser={handleUpdateUserInfo}
+                             onModalMenuClick = {openMenuModal}
+                             onModalMenuClose = {closeMenuModal}
                              />} 
                         />
-                        <Route path="/error" element={<ErrorPage/>} />
                         <Route path="/movies" 
                             element={
                                 <ProtectedRoute loggedIn={loggedIn}>
@@ -191,12 +199,23 @@ function App() {
                             </ProtectedRoute>
                             } 
                         />
-                        <Route index element={<Main loggedIn={loggedIn} />} />
+                        <Route index element={<Main 
+                            loggedIn={loggedIn}
+                            onModalMenuClick = {openMenuModal}
+                            onModalMenuClose = {closeMenuModal}
+                            />} 
+                        />
+                        <Route path="*" element={<ErrorPage message="Страница не найдена" status='404'/>} />
                     </Routes>
-                    <MenuModal 
+                <MenuModal 
                         isModalMenuOpen={isModalMenuOpen} 
                         onMenuModalClose={closeMenuModal} 
-                    />
+                />
+                <InfoToolTip 
+                        isInfoTooltipOpen={isInfoTooltipOpen}
+                        onToolTipClose={toolTipClose}
+                        infoTooltipMsg={infoTooltipMsg}
+                />
                 </div>
             </BrowserRouter>
         </CurrentUserContext.Provider>
