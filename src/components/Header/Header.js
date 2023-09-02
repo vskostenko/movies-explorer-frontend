@@ -12,9 +12,7 @@ function Header(props) {
         <>
             <header  className={ pathname === '/' ? 'header' : 'header header_black'}>
                 <div className="header__container">
-                    <Link to="/" className="Link"> 
-                        <Logo />
-                    </Link>
+                    <Logo />
                     { props.loggedIn
                         ? <Navigation 
                             onModalMenuClick={props.onModalMenuClick}

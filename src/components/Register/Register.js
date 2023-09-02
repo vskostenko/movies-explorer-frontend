@@ -3,6 +3,7 @@ import "./Register.css";
 import logoImg from "../../images/logo.svg";
 import { Link, Navigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import Logo from "../Logo/Logo";
 
 function Register ({ handleRegister, handleLogin, loggedIn }) {
     const  { values, handleChange, errors, isValid }  = useFormWithValidation();
@@ -28,7 +29,7 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
                       <Navigate to="/saved-movies" replace={true} />
                     )}
                 <form className="register__form" onSubmit={handleSubmit} >
-                    <img src={logoImg} alt="logo"/>
+                    <Logo />
                     <h2 className="register__greet">Добро пожаловать!</h2>
                     <p className="register__field-caption">Имя</p>
                     <input 

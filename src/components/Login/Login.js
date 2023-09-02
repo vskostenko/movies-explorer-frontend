@@ -3,9 +3,10 @@ import logoImg from "../../images/logo.svg";
 import "./Login.css";
 import { Link, Navigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import Logo from "../Logo/Logo";
 
 function Login ({handleLogin, loggedIn}) {
-    const  { values, handleChange, errors, isValid}  = useFormWithValidation();
+    const  { values, handleChange, errors, isValid }  = useFormWithValidation();
     
     function handleSubmit(e){
         e.preventDefault();
@@ -20,7 +21,7 @@ function Login ({handleLogin, loggedIn}) {
                       <Navigate to="/movies" replace={true} />
                     )}
                 <form className="login__form" onSubmit={handleSubmit}>
-                    <img src={logoImg} alt="logo"/>
+                    <Logo />
                     <h2 className="login__greet">Рады видеть!</h2>
                     <p className="login__field-caption">E-mail</p>
                     <input 
