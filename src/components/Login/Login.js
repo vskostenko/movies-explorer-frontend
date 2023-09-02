@@ -1,8 +1,8 @@
 import React from "react";
-import logoImg from "../../images/logo.svg";
 import "./Login.css";
 import { Link, Navigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import { EMAIL_REGEX } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 
 function Login ({handleLogin, loggedIn}) {
@@ -15,6 +15,9 @@ function Login ({handleLogin, loggedIn}) {
             password: values.password
         })
     }
+    const checkEmail = (email) => {
+        return !!String(email).toLowerCase().match(EMAIL_REGEX);
+    };
     return (
             <div className="login">
                 {loggedIn && (
@@ -36,6 +39,7 @@ function Login ({handleLogin, loggedIn}) {
                         onChange={handleChange}
                         errors={errors}
                         isValid={isValid}
+                        pattern={EMAIL_REGEX}
                     />
                     <div 
                         className="login__error" 
@@ -51,7 +55,7 @@ function Login ({handleLogin, loggedIn}) {
                         placeholder="" 
                         autoComplete="off" 
                         onChange={handleChange}
-                        minLength={4}
+                        minLength={8}
                         maxLength={20}
                         errors={errors}
                         isValid={isValid}

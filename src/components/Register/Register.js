@@ -1,8 +1,8 @@
 import React from "react";
 import "./Register.css";
-import logoImg from "../../images/logo.svg";
 import { Link, Navigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import { EMAIL_REGEX } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 
 function Register ({ handleRegister, handleLogin, loggedIn }) {
@@ -26,7 +26,7 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
         <main>
             <div className="register">
                 {loggedIn && (
-                      <Navigate to="/saved-movies" replace={true} />
+                      <Navigate to="/movies" replace={true} />
                     )}
                 <form className="register__form" onSubmit={handleSubmit} >
                     <Logo />
@@ -59,6 +59,7 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
                         onChange={handleChange}
                         errors={errors}
                         isValid={isValid}
+                        pattern={EMAIL_REGEX}
                     />
                     <div className="register__error" id="email-error">{errors.email}</div>
                     <p className="register__field-caption">Пароль</p>
@@ -70,7 +71,7 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
                         placeholder=""
                         autoComplete="off"
                         onChange={handleChange}
-                        minLength={4}
+                        minLength={8}
                         maxLength={20}
                         errors={errors}
                         isValid={isValid}

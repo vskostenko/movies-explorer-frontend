@@ -4,6 +4,8 @@ import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import { EMAIL_REGEX } from "../../utils/constants";
+
 
 function Profile (props) {
     const { currentUser } = useContext(CurrentUserContext);
@@ -88,6 +90,7 @@ function Profile (props) {
                         readOnly={!isInputActive}
                         value={values["email"] || ""}
                         placeholder="Введите e-mail"
+                        pattern={EMAIL_REGEX}
                     />
                 </div>
                 <div className="profile__input-error">{errors.email}</div>
