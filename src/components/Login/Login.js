@@ -5,7 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Login ({handleLogin, loggedIn}) {
-    const  { values, handleChange, errors, isValid, resetForm}  = useFormWithValidation();
+    const  { values, handleChange, errors, isValid}  = useFormWithValidation();
     
     function handleSubmit(e){
         e.preventDefault();

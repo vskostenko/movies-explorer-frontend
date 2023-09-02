@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form" 
-import React, { useEffect } from "react";
+import React from "react";
 import "./SearchForm.css";  
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import { useLocation } from "react-router-dom";
 
 function SearchForm (props) {
     const {

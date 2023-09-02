@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useResize } from "../../utils/useResize";
 
 function MoviesCardList (props) {
-    const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl } = useResize();
+    const { isScreenSm } = useResize();
     const [itemCount, setItemCount] = useState();
     const [moreCount, setMoreCount] = useState();
     const [checkedMovies, setCheckedMovies] = useState ([]);

@@ -7,7 +7,7 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Profile (props) {
     const { currentUser } = useContext(CurrentUserContext);
-    const { values,setValues, handleChange, errors, isValid, resetForm}  = useFormWithValidation();
+    const { values,setValues, handleChange, errors, isValid }  = useFormWithValidation();
     const [ isInputActive, setIsInputActive ] = useState(false);
     const [ buttonCaption, setButtonCaption ] = useState('Редактровать');
     const navigate = useNavigate();

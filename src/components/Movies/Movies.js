@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -25,7 +24,6 @@ function Movies (props) {
     });
 
     const [ isLoading, setIsLoading ] = useState(false);
-    let { pathname } = useLocation();
 
 function handleSearch (inputs) {
         setIsLoading(true);
@@ -34,7 +32,6 @@ function handleSearch (inputs) {
         moviesApi.getMovies()
             .then((moviesArray)=>{
                 const filteredData = searchWordInArray(moviesArray, searchWord)
-                console.log(filteredData);
                 if (filteredData.length > 0 ) {
                     setfilteredMovies (filteredData);
                     localStorage.setItem('filteredData', JSON.stringify(filteredData));

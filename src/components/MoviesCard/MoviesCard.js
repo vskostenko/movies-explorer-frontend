@@ -1,22 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import favIcon from "../../images/fav_icon_on.png";
 import favIconOff from "../../images/fav_icon_off.svg";
 import removeIcon from "../../images/del_icon.svg";
 import "./MoviesCard.css";
 import { MOVIES_SERVER_URL} from "../../utils/constants";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function MoviesCard ({movie,onSaveMovie,onRemoveMovie,savedMovies}) {
     const [saveStatus, setSaveStatus] = useState(()=>{
         return savedMovies.some((item) => item.movieId === movie.id)
     });
-    useEffect(()=> {
-
-    })
-
-
     let { pathname } = useLocation();
-
     function saveMovieHandle () {
         saveStatus 
             ? onRemoveMovie(movie)
