@@ -2,10 +2,10 @@ import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import { useState, useEffect } from 'react';
-import { useResize } from "../../utils/useResize";
+import { useResize } from "../../hooks/useResize";
 
 function MoviesCardList (props) {
-    const { isScreenSm } = useResize();
+    const { width } = useResize();
     const [itemCount, setItemCount] = useState();
     const [moreCount, setMoreCount] = useState();
     const [checkedMovies, setCheckedMovies] = useState ([]);
@@ -22,14 +22,17 @@ function MoviesCardList (props) {
         setItemCount(itemCount+moreCount);
     }
     useEffect (()=> {
-        if (!isScreenSm) {
+        if ( width < 768) {
             setItemCount(5);
             setMoreCount(2);
-        } else {
+        } else if (width > 1279) {
             setItemCount(12);
             setMoreCount(3);
+        } else {
+            setItemCount(8);
+            setMoreCount(2);
         }
-    },[isScreenSm])
+    },[width])
     return (
         <section className="moviescardlist">
             <ul className="moviescardlist__grid">
