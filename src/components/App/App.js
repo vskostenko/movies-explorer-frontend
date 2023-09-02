@@ -32,10 +32,7 @@ function App() {
             .catch((err) => console.log(err))
         }
     },[loggedIn]);
-    const [ isShortMovies, setIsShortMovies ] = useState(()=> {
-        const checked = localStorage.getItem('checked');
-        return JSON.parse(checked) || undefined;
-    });
+
     const [ searchedMovies, setSearchedMovies ] = useState(()=> {
         const movies = localStorage.getItem('filteredData');
         const initalMovies = JSON.parse(movies);
@@ -55,10 +52,6 @@ function App() {
     function closeMenuModal () {
         setModalMenuOpen(false);
     };
-    function checkboxHandler () {
-        setIsShortMovies(!isShortMovies);
-        localStorage.setItem("checked",!isShortMovies);
-    }
     function checkToken() {
         mainApi.checkToken()
           .then((res) => {
@@ -172,8 +165,6 @@ function App() {
                                     <Movies 
                                         onModalMenuClick = {openMenuModal}
                                         onModalMenuClose = {closeMenuModal}
-                                        isShortMovies={isShortMovies}
-                                        checkboxHandler={checkboxHandler}
                                         movies={searchedMovies}
                                         loggedIn={loggedIn}
                                         savedMovies={savedMovies}
@@ -189,8 +180,6 @@ function App() {
                             <SavedMovies 
                                 onModalMenuClick={openMenuModal}
                                 onModalMenuClose={closeMenuModal}
-                                isShortMovies={isShortMovies}
-                                checkboxHandler={checkboxHandler}
                                 loggedIn={loggedIn}
                                 savedMovies={savedMovies}
                                 setSavedMovies={setSavedMovies}

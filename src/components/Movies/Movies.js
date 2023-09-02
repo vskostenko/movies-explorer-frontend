@@ -22,6 +22,10 @@ function Movies (props) {
         const word = localStorage.getItem('searchWord');
         return word || "";
     });
+    const [ isShortMovies, setIsShortMovies ] = useState(()=> {
+        const checked = localStorage.getItem('checked');
+        return JSON.parse(checked) || undefined;
+    });
 
     const [ isLoading, setIsLoading ] = useState(false);
 
@@ -69,6 +73,10 @@ function handleSearch (inputs) {
     function updateSearchWord (event) {
         setSearchWord(event.target.value);
     }
+    function checkboxHandler () {
+        setIsShortMovies(!isShortMovies);
+        localStorage.setItem("checked",!isShortMovies);
+    }
     return (
         <>
             <Header
@@ -78,8 +86,8 @@ function handleSearch (inputs) {
             />
 
                 <SearchForm 
-                    isShortMovies={props.isShortMovies}
-                    checkboxHandler={props.checkboxHandler}
+                    isShortMovies={isShortMovies}
+                    checkboxHandler={checkboxHandler}
                     onSubmit = { handleSearch } 
                     searchWord = { searchWord }
                     onInputChange = {updateSearchWord}

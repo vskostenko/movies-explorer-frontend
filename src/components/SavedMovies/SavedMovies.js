@@ -17,6 +17,7 @@ function SavedMovies ({
 }) {
     const [ filteredMoviesSaved, setfilteredMoviesSaved ] =  useState(savedMovies);
     const [ savedSearchWord, setSavedSearchWord ] = useState('');
+    const [ isShortMoviesSaved, setIsShortMoviesSaved ] = useState(false);
     useEffect (()=> {
         setfilteredMoviesSaved(searchWordInArray(savedMovies, savedSearchWord));
     },[savedMovies, savedSearchWord])
@@ -24,8 +25,10 @@ function SavedMovies ({
     function updateFilterSaved (event) {
         setSavedSearchWord(event.target.value);
     }
-    function handleSearch () {
-        
+    function checkboxHandlerSaved () {
+        setIsShortMoviesSaved(!isShortMoviesSaved);
+    }
+    function handleSearch () {   
     }
     return (
         <>
@@ -36,14 +39,14 @@ function SavedMovies ({
             />
             <SearchForm 
                 isShortMovies={false}
-                checkboxHandler={checkboxHandler}
+                checkboxHandler={checkboxHandlerSaved}
                 onSubmit = { handleSearch }
                 searchWord = {''}
                 onInputChange = {updateFilterSaved}
             />
             <MoviesCardList 
                 allMovies = { filteredMoviesSaved }
-                isShortMovies={ isShortMovies }
+                isShortMovies={ isShortMoviesSaved }
                 savedMovies={savedMovies}
                 onRemoveMovie={onRemoveMovie}
             /> 
