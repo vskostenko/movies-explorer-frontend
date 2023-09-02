@@ -15,9 +15,6 @@ function Login ({handleLogin, loggedIn}) {
             password: values.password
         })
     }
-    const checkEmail = (email) => {
-        return !!String(email).toLowerCase().match(EMAIL_REGEX);
-    };
     return (
             <div className="login">
                 {loggedIn && (

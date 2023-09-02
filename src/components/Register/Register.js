@@ -9,17 +9,18 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
     const  { values, handleChange, errors, isValid }  = useFormWithValidation();
 
     function handleSubmit(e){
-        console.log('submit');
         e.preventDefault();
         handleRegister({
             name: values.name,
             email: values.email,
             password: values.password
         }).then((res)=> {
+            if (res) {
             handleLogin({
                 email: values.email,
                 password: values.password,
-            });
+            })
+        }
         });
     }
     return (
