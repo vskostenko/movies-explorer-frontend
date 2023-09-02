@@ -3,6 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import { useState, useEffect } from 'react';
 import { useResize } from "../../hooks/useResize";
+import { SHORT_MOVIE_LENGTH, SCREEN_MD, SCREEN_XL } from "../../utils/constants"
 
 function MoviesCardList (props) {
     const { width } = useResize();
@@ -12,7 +13,7 @@ function MoviesCardList (props) {
 
     useEffect (()=> {
             const movies = props.allMovies.filter ((movie) => {
-                if (!props.isShortMovies  && movie.duration < 40 ) return false
+                if (!props.isShortMovies  && movie.duration < SHORT_MOVIE_LENGTH) return false
                 else return true;
             })
             setCheckedMovies(movies);
@@ -22,10 +23,10 @@ function MoviesCardList (props) {
         setItemCount(itemCount+moreCount);
     }
     useEffect (()=> {
-        if ( width < 768) {
+        if ( width < SCREEN_MD) {
             setItemCount(5);
             setMoreCount(2);
-        } else if (width > 1279) {
+        } else if (width > SCREEN_XL) {
             setItemCount(12);
             setMoreCount(3);
         } else {

@@ -161,7 +161,7 @@ function App() {
                         />
                         <Route path="/movies" 
                             element={
-                                <ProtectedRoute loggedIn={loggedIn}>
+                                <ProtectedRoute loggedIn={loggedIn} redirectTo="/">
                                     <Movies 
                                         onModalMenuClick = {openMenuModal}
                                         onModalMenuClose = {closeMenuModal}
@@ -176,7 +176,7 @@ function App() {
                         />
                         <Route path="/saved-movies" 
                             element={
-                            <ProtectedRoute loggedIn={loggedIn}>
+                            <ProtectedRoute loggedIn={loggedIn} redirectTo="/">
                             <SavedMovies 
                                 onModalMenuClick={openMenuModal}
                                 onModalMenuClose={closeMenuModal}
