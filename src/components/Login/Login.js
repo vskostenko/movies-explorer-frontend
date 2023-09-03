@@ -67,7 +67,6 @@ function Login ({handleLogin, loggedIn, isLoading}) {
                             ? "login__button login__button_disabled"
                             : "login__button"
                         }
-
                         type="submit" 
                         value={isLoading
                             ? `Загрузка` 

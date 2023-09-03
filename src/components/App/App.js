@@ -165,18 +165,19 @@ function App() {
                                 isLoading={isLoading}
                             />}
                         />
-                        <Route path="/profile" element={<Profile
-                             loggedIn={loggedIn}
-                             isLoading={isLoading}
-                             onLogout={handleLogout}
-                             onUpdateUser={handleUpdateUserInfo}
-                             onModalMenuClick = {openMenuModal}
-                             onModalMenuClose = {closeMenuModal}
-                             />} 
+                        <Route path="/profile" 
+                            element={<Profile
+                                loggedIn={loggedIn}
+                                isLoading={isLoading}
+                                onLogout={handleLogout}
+                                onUpdateUser={handleUpdateUserInfo}
+                                onModalMenuClick = {openMenuModal}
+                                onModalMenuClose = {closeMenuModal}
+                                />} 
                         />
                         <Route path="/movies" 
                             element={
-                                <ProtectedRoute loggedIn={loggedIn} redirectTo="/">
+                                <ProtectedRoute loggedIn={loggedIn}>
                                     <Movies 
                                         onModalMenuClick = {openMenuModal}
                                         onModalMenuClose = {closeMenuModal}
@@ -193,7 +194,7 @@ function App() {
                         />
                         <Route path="/saved-movies" 
                             element={
-                            <ProtectedRoute loggedIn={loggedIn} redirectTo="/">
+                            <ProtectedRoute loggedIn={loggedIn}>
                                 <SavedMovies 
                                     onModalMenuClick={openMenuModal}
                                     onModalMenuClose={closeMenuModal}

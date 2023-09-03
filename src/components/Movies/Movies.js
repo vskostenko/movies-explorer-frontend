@@ -17,7 +17,6 @@ function Movies (props) {
         const initalMovies = JSON.parse(movies);
         return initalMovies || [];
     });
-
     const [ searchWord, setSearchWord ] = useState(()=> {
         const word = localStorage.getItem('searchWord');
         return word || "";
@@ -26,11 +25,10 @@ function Movies (props) {
         const checked = localStorage.getItem('checked');
         return JSON.parse(checked) || undefined;
     });
-
+    
 function handleSearch (inputs) {
         props.setIsLoading(true);
         localStorage.setItem('searchWord', searchWord);
-
         moviesApi.getMovies()
             .then((moviesArray)=>{
                 const filteredData = searchWordInArray(moviesArray, searchWord)

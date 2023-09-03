@@ -16,7 +16,7 @@ function Profile (props) {
         if ( JSON.stringify(currentUser) === JSON.stringify(values)) {
             setIsValid(false);
         }
-    },[values])
+    },[values, currentUser, setIsValid])
     const navigate = useNavigate();
     useEffect(() => {
         setValues({
