@@ -13,9 +13,6 @@ function Profile (props) {
     const [ isInputActive, setIsInputActive ] = useState(false);
     const [ buttonCaption, setButtonCaption ] = useState('Редактровать');
     useEffect(()=> {
-        console.log(JSON.stringify(currentUser));
-        console.log(JSON.stringify(values));
-
         if ( JSON.stringify({name:currentUser.name, email:currentUser.email}) === JSON.stringify(values)) {
             setIsValid(false);
         }

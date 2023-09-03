@@ -26,26 +26,22 @@ function Movies (props) {
         return JSON.parse(checked) || undefined;
     });
     
-function handleSearch (inputs) {
+    function handleSearch (inputs) {
         props.setIsLoading(true);
         localStorage.setItem('searchWord', searchWord);
-        moviesApi.getMovies()
-            .then((moviesArray)=>{
-                const filteredData = searchWordInArray(moviesArray, searchWord)
-                if (filteredData.length > 0 ) {
-                    setfilteredMovies (filteredData);
-                    localStorage.setItem('filteredData', JSON.stringify(filteredData));
-                } else {
-                    console.log('error');
-                    setfilteredMovies([]);
-                    localStorage.setItem('filteredData', JSON.stringify(filteredData));
-                }
-            })
-            .catch((err) => {console.log(`Ошибка ${err}`)})
-            .finally(() => {
-                props.setIsLoading(false);
-           })
-}
+        const moviesArray = JSON.parse(localStorage.getItem('allmovies'))
+        const filteredData = searchWordInArray(moviesArray, searchWord)
+        if (filteredData.length > 0 ) {
+            setfilteredMovies (filteredData);
+            localStorage.setItem('filteredData', JSON.stringify(filteredData));
+            } else {
+             console.log('error');
+            setfilteredMovies([]);
+            localStorage.setItem('filteredData', JSON.stringify(filteredData));
+        }
+        props.setIsLoading(false);
+    }
+
 
     function addMovieToSaved (movie) {
         mainApi.createMovie(

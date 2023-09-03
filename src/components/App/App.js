@@ -9,6 +9,7 @@ import Movies from "../Movies/Movies";
 import MenuModal from "../Header/MenuModal/MenuModal";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import mainApi from "../../utils/MainApi";
+import moviesApi from "../../utils/MoviesApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../../utils/ProtectedRoute";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -16,14 +17,20 @@ import InfoToolTip from "../InfoToolTip/InfoToolTip";
 import { errors } from "../../utils/errors";
 
 function App() {
-    const [loggedIn,setLoggedIn] = useState(false);
-    const [currentUser, setCurrentUser] = useState({});
+    const [ loggedIn,setLoggedIn ] = useState(false);
+    const [ currentUser, setCurrentUser ] = useState({});
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
-    const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
-    const [infoTooltipMsg, setInfoTooltipMsg] = useState(null);
+    const [ isInfoTooltipOpen, setInfoTooltipOpen ] = useState(false);
+    const [ infoTooltipMsg, setInfoTooltipMsg ] = useState(null);
     const [ isLoading, setIsLoading ] = useState(false);
-    
+    const [ storedMovies, setStoredMovies] = useState();
+    const [ searchedMovies, setSearchedMovies ] = useState(()=> {
+        const movies = localStorage.getItem('filteredData');
+        const initalMovies = JSON.parse(movies);
+        return initalMovies || "";
+    }); 
+
     useEffect(()=> {
         if (loggedIn) {
             setIsLoading(true);
@@ -36,12 +43,21 @@ function App() {
 
         }
     },[loggedIn]);
-
-    const [ searchedMovies, setSearchedMovies ] = useState(()=> {
-        const movies = localStorage.getItem('filteredData');
-        const initalMovies = JSON.parse(movies);
-        return initalMovies || "";
-    });
+    useEffect(() => {
+        if (localStorage.getItem('allmovies')) {
+            setStoredMovies(JSON.parse(localStorage.getItem('allmovies')));
+        } else {
+            setIsLoading(true);
+            moviesApi
+              .getMovies()
+              .then((movies) => {
+                localStorage.setItem('allmovies', JSON.stringify(movies));
+                setStoredMovies(movies);
+              })
+              .catch((err) => showErrorToUser(err))
+              .finally(setIsLoading(false));
+            }
+        }, [loggedIn]);
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
@@ -111,6 +127,7 @@ function App() {
         localStorage.removeItem('filteredData');
         localStorage.removeItem('searchWord');
         localStorage.removeItem('checked');
+        localStorage.removeItem('allmovies');
         setLoggedIn(false);
         setCurrentUser({
           _id: '',
@@ -188,6 +205,7 @@ function App() {
                                         onRemoveMovie={removeMoviefromSaved}
                                         isLoading={isLoading}
                                         setIsLoading={setIsLoading}
+                                        storedMovies = {storedMovies}
                                     />
                                 </ProtectedRoute>
                             }
