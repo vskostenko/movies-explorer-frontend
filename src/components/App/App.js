@@ -31,7 +31,7 @@ function App() {
             .then ((movies) => {
                 setSavedMovies(movies);
             })
-            .catch((err) => console.log(err))
+            .catch((err) => showErrorToUser(err))
             .finally(setIsLoading(false))
 
         }
@@ -63,7 +63,7 @@ function App() {
                 setCurrentUser(res);
           })
           .catch((err) => {
-            console.log(err);
+            showErrorToUser(err);
           });
     }
     function handleRegister (userData){
@@ -86,29 +86,26 @@ function App() {
                 handleLogout();
             }
             })
-        .catch((err)=> {
-            setInfoTooltipMsg(errors(err));
-            setInfoTooltipOpen(true);
-        })
+        .catch((err)=> showErrorToUser(err))
         .finally(setIsLoading(false));
     }
     function handleUpdateUserInfo(data) {
         setIsLoading(true);
-            mainApi
-              .editUserInfo(data)
-              .then((user) => {
-                setCurrentUser({
-                  name: user.name,
-                  email: user.email,
-                });
-                setInfoTooltipMsg(`Данные успешно изменены ${currentUser.name}`);
-                setInfoTooltipOpen(true);
-              })              
-              .catch((err)=> {
-                setInfoTooltipMsg(errors(err));
-                setInfoTooltipOpen(true);
-            })
-          }
+        mainApi
+        .editUserInfo(data)
+        .then((user) => {
+            setCurrentUser({
+              name: user.name,
+              email: user.email,
+            });
+            setInfoTooltipMsg(`Данные успешно изменены ${currentUser.name}`);
+            setInfoTooltipOpen(true);
+            })              
+        .catch((err)=> {
+            setInfoTooltipMsg(errors(err));
+            setInfoTooltipOpen(true);
+        })
+    }
     function handleLogout() {
         localStorage.removeItem('jwt');
         localStorage.removeItem('filteredData');
@@ -139,8 +136,12 @@ function App() {
             });
             setSavedMovies(newMoviesList);
         })
-        .catch((err)=> console.log(err))     
+        .catch((err)=> showErrorToUser(err))     
         .finally(setIsLoading(false))  
+    }
+    function showErrorToUser(err) {
+        setInfoTooltipMsg(errors(err));
+        setInfoTooltipOpen(true);
     }
     return (
         <CurrentUserContext.Provider value={{currentUser,setCurrentUser}}>
