@@ -5,7 +5,7 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { EMAIL_REGEX } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 
-function Login ({handleLogin, loggedIn}) {
+function Login ({handleLogin, loggedIn, isLoading}) {
     const  { values, handleChange, errors, isValid }  = useFormWithValidation();
     
     function handleSubmit(e){
@@ -63,13 +63,17 @@ function Login ({handleLogin, loggedIn}) {
                         {errors.password}
                     </div>
                     <input 
-                        className={isValid 
-                            ? "login__button"
-                            : "login__button login__button_disabled"}
+                        className={(!isValid || isLoading)
+                            ? "login__button login__button_disabled"
+                            : "login__button"
+                        }
+
                         type="submit" 
-                        value="Войти" 
+                        value={isLoading
+                            ? `Загрузка` 
+                            : `Войти`}
                         onSubmit={handleSubmit}
-                        disabled={!isValid}
+                        disabled={!isValid || isLoading}
                     />
                 </form>
                 <p className='login__signin'>Ещё не зарегистрированы?

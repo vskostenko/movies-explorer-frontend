@@ -27,10 +27,8 @@ function Movies (props) {
         return JSON.parse(checked) || undefined;
     });
 
-    const [ isLoading, setIsLoading ] = useState(false);
-
 function handleSearch (inputs) {
-        setIsLoading(true);
+        props.setIsLoading(true);
         localStorage.setItem('searchWord', searchWord);
 
         moviesApi.getMovies()
@@ -47,7 +45,7 @@ function handleSearch (inputs) {
             })
             .catch((err) => {console.log(`Ошибка ${err}`)})
             .finally(() => {
-                setIsLoading(false);
+                props.setIsLoading(false);
            })
 }
 
@@ -93,7 +91,7 @@ function handleSearch (inputs) {
                     onInputChange = {updateSearchWord}
                 />
         
-            { !isLoading 
+            { !props.isLoading 
                 ?     
                             <MoviesCardList 
                                 allMovies = { filteredMovies }

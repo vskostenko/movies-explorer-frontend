@@ -5,7 +5,7 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { EMAIL_REGEX } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 
-function Register ({ handleRegister, handleLogin, loggedIn }) {
+function Register ({ handleRegister, handleLogin, loggedIn, isLoading }) {
     const  { values, handleChange, errors, isValid }  = useFormWithValidation();
 
     function handleSubmit(e){
@@ -79,13 +79,15 @@ function Register ({ handleRegister, handleLogin, loggedIn }) {
                     />
                     <div className="register__error" id="email-error">{errors.password}</div>
                     <input 
-                        className={isValid 
-                            ? "register__button"
-                            : "register__button register__button_disabled"}
+                        className={(!isValid || isLoading)
+                            ? "register__button register__button_disabled"
+                            : "register__button "}
                         type="submit"
-                        value="Зарегистрироваться"
+                        value={isLoading
+                            ? `Регистрируем` 
+                            : `Зарегистрироваться`}
                         onSubmit={handleSubmit}
-                        disabled={!isValid}
+                        disabled={!isValid || isLoading}
                     />
                 </form>
                 <p className='register__signin'>Уже зарегистрированы?

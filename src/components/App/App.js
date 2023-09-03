@@ -22,14 +22,18 @@ function App() {
     const [ isModalMenuOpen, setModalMenuOpen ] = useState(false);
     const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
     const [infoTooltipMsg, setInfoTooltipMsg] = useState(null);
+    const [ isLoading, setIsLoading ] = useState(false);
     
     useEffect(()=> {
         if (loggedIn) {
+            setIsLoading(true);
             mainApi.getMovies()
             .then ((movies) => {
                 setSavedMovies(movies);
             })
             .catch((err) => console.log(err))
+            .finally(setIsLoading(false))
+
         }
     },[loggedIn]);
 
@@ -62,14 +66,17 @@ function App() {
             console.log(err);
           });
     }
-    function handleRegister (userData){;
+    function handleRegister (userData){
+        setIsLoading(true);
         return mainApi.register(userData)
         .catch((err)=> {
             setInfoTooltipMsg(errors(err));
             setInfoTooltipOpen(true);
         })
+        .finally(setIsLoading(false))  
     }
     function handleLogin (userData) {
+        setIsLoading(true);
         mainApi.login(userData)
         .then((res)=> {
             if (res.token) {
@@ -83,8 +90,10 @@ function App() {
             setInfoTooltipMsg(errors(err));
             setInfoTooltipOpen(true);
         })
+        .finally(setIsLoading(false));
     }
     function handleUpdateUserInfo(data) {
+        setIsLoading(true);
             mainApi
               .editUserInfo(data)
               .then((user) => {
@@ -116,6 +125,7 @@ function App() {
         setInfoTooltipOpen(false);
     }
     function removeMoviefromSaved (movie) {
+        setIsLoading(true);
         const savedMovieId = savedMovies.find((item) => item.movieId === (movie.movieId ?? movie.id))._id;
         mainApi
         .removeMovie(savedMovieId)
@@ -129,7 +139,8 @@ function App() {
             });
             setSavedMovies(newMoviesList);
         })
-        .catch((err)=> console.log(err))       
+        .catch((err)=> console.log(err))     
+        .finally(setIsLoading(false))  
     }
     return (
         <CurrentUserContext.Provider value={{currentUser,setCurrentUser}}>
@@ -140,7 +151,8 @@ function App() {
                             path="/signin" 
                             element={<Login
                                 handleLogin={handleLogin}
-                                loggedIn={loggedIn} 
+                                loggedIn={loggedIn}
+                                isLoading={isLoading}
                             />} 
                         />
                         <Route 
@@ -149,10 +161,12 @@ function App() {
                                 handleRegister={handleRegister}
                                 loggedIn={loggedIn}
                                 handleLogin={handleLogin}
+                                isLoading={isLoading}
                             />}
                         />
                         <Route path="/profile" element={<Profile
-                             loggedIn={loggedIn} 
+                             loggedIn={loggedIn}
+                             isLoading={isLoading}
                              onLogout={handleLogout}
                              onUpdateUser={handleUpdateUserInfo}
                              onModalMenuClick = {openMenuModal}
@@ -170,6 +184,8 @@ function App() {
                                         savedMovies={savedMovies}
                                         setSavedMovies={setSavedMovies}
                                         onRemoveMovie={removeMoviefromSaved}
+                                        isLoading={isLoading}
+                                        setIsLoading={setIsLoading}
                                     />
                                 </ProtectedRoute>
                             }
@@ -177,14 +193,14 @@ function App() {
                         <Route path="/saved-movies" 
                             element={
                             <ProtectedRoute loggedIn={loggedIn} redirectTo="/">
-                            <SavedMovies 
-                                onModalMenuClick={openMenuModal}
-                                onModalMenuClose={closeMenuModal}
-                                loggedIn={loggedIn}
-                                savedMovies={savedMovies}
-                                setSavedMovies={setSavedMovies}
-                                onRemoveMovie={removeMoviefromSaved}
-                            />
+                                <SavedMovies 
+                                    onModalMenuClick={openMenuModal}
+                                    onModalMenuClose={closeMenuModal}
+                                    loggedIn={loggedIn}
+                                    savedMovies={savedMovies}
+                                    setSavedMovies={setSavedMovies}
+                                    onRemoveMovie={removeMoviefromSaved}
+                                />
                             </ProtectedRoute>
                             } 
                         />
