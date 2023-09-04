@@ -15,6 +15,7 @@ import ProtectedRoute from "../../utils/ProtectedRoute";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import InfoToolTip from "../InfoToolTip/InfoToolTip";
 import { errors } from "../../utils/errors";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
     const [ loggedIn,setLoggedIn ] = useState(false);
@@ -44,7 +45,8 @@ function App() {
         }
     },[loggedIn]);
     useEffect(() => {
-        if (localStorage.getItem('allmovies')) {
+        if (!loggedIn) {return} 
+        else if (localStorage.getItem('allmovies')) {
             setStoredMovies(JSON.parse(localStorage.getItem('allmovies')));
         } else {
             setIsLoading(true);
@@ -133,7 +135,6 @@ function App() {
           _id: '',
           name: '',
           email: '',
-
         });
     }
     function toolTipClose(){
@@ -165,6 +166,9 @@ function App() {
         <CurrentUserContext.Provider value={{currentUser,setCurrentUser}}>
             <BrowserRouter>
                 <div className="page">
+                    {
+                        isLoading && <Preloader />
+                    }
                     <Routes>
                         <Route 
                             path="/signin" 
