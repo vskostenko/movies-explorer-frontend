@@ -114,7 +114,7 @@ function App() {
               name: user.name,
               email: user.email,
             });
-            setInfoTooltipMsg(`Данные успешно изменены ${currentUser.name}`);
+            setInfoTooltipMsg(`Данные успешно изменены ${user.name}`);
             setInfoTooltipOpen(true);
             })              
         .catch((err)=> {
@@ -133,6 +133,7 @@ function App() {
           _id: '',
           name: '',
           email: '',
+
         });
     }
     function toolTipClose(){

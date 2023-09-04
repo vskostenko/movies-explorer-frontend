@@ -38,10 +38,6 @@ function Profile (props) {
                 name: values.name,
                 email: values.email,
             });
-            setValues ({
-                name: currentUser.name,
-                email: currentUser.email,
-              })
             setButtonCaption('Редактировать');
             setIsInputActive(false);
         }
