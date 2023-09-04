@@ -14,6 +14,7 @@ function SavedMovies ({
     removeMoviefromSaved,
     savedMovies,
     onRemoveMovie,
+    isLoading
 }) {
     const [ filteredMoviesSaved, setfilteredMoviesSaved ] =  useState(savedMovies);
     const [ savedSearchWord, setSavedSearchWord ] = useState('');
@@ -49,6 +50,7 @@ function SavedMovies ({
                 isShortMovies={ isShortMoviesSaved }
                 savedMovies={savedMovies}
                 onRemoveMovie={onRemoveMovie}
+                isLoading={isLoading}
             /> 
             <Footer />
         </>

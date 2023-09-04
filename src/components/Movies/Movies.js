@@ -4,7 +4,6 @@ import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
 import mainApi from "../../utils/MainApi";
 import { MOVIES_SERVER_URL } from "../../utils/constants";
 import searchWordInArray from "../../utils/searchWordInArray";
@@ -38,7 +37,7 @@ function Movies (props) {
             setfilteredMovies([]);
             localStorage.setItem('filteredData', JSON.stringify(filteredData));
         }
-        props.setIsLoading(false);
+        setTimeout(() => { props.setIsLoading(false) }, 500);
     }
 
     function addMovieToSaved (movie) {
@@ -74,26 +73,21 @@ function Movies (props) {
                 onModalMenuClose = { props.onModalMenuClose }
                 loggedIn = {props.loggedIn}
             />
-
                 <SearchForm 
                     isShortMovies={isShortMovies}
                     checkboxHandler={checkboxHandler}
                     onSubmit = { handleSearch } 
                     searchWord = { searchWord }
                     onInputChange = {updateSearchWord}
-                />
-        
-            { !props.isLoading 
-                ?     
-                            <MoviesCardList 
-                                allMovies = { filteredMovies }
-                                isShortMovies={ isShortMovies }
-                                onSaveMovie={addMovieToSaved}
-                                onRemoveMovie={props.onRemoveMovie}
-                                savedMovies={props.savedMovies}
-                            />
-                : <Preloader />
-            }
+                />          
+                    <MoviesCardList 
+                        allMovies = { filteredMovies }
+                        isShortMovies={ isShortMovies }
+                        onSaveMovie={addMovieToSaved}
+                        onRemoveMovie={props.onRemoveMovie}
+                        savedMovies={props.savedMovies}
+                        isLoading={props.isLoading}
+                    />
             <Footer />
         </>
     )

@@ -4,6 +4,7 @@ import "./MoviesCardList.css";
 import { useState, useEffect } from 'react';
 import { useResize } from "../../hooks/useResize";
 import { SHORT_MOVIE_LENGTH, SCREEN_MD, SCREEN_XL } from "../../utils/constants"
+import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList (props) {
     const { width } = useResize();
@@ -41,18 +42,23 @@ function MoviesCardList (props) {
 
     return (
         <section className="moviescardlist">
-            <ul className="moviescardlist__grid">
-                {
-                checkedMovies.slice(0, itemCount).map((movie) => {
-			        return <MoviesCard 
-                                movie={movie}
-                                onSaveMovie={props.onSaveMovie}
-                                onRemoveMovie={props.onRemoveMovie}
-                                savedMovies={props.savedMovies}
-                                key={movie.id || movie._id} 
-                            />
-		        })}
-            </ul>
+            {
+            props.isLoading
+            ? <Preloader />
+            :
+                <ul className="moviescardlist__grid">
+                    {
+                    checkedMovies.slice(0, itemCount).map((movie) => {
+                        return <MoviesCard 
+                                    movie={movie}
+                                    onSaveMovie={props.onSaveMovie}
+                                    onRemoveMovie={props.onRemoveMovie}
+                                    savedMovies={props.savedMovies}
+                                    key={movie.id || movie._id} 
+                                />
+                    })}
+                </ul>
+            }
             { checkedMovies.length > itemCount && 
                 <button className="moviescardlist__button" onClick={buttonHandler}>
                     Ещё

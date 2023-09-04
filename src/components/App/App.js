@@ -88,10 +88,9 @@ function App() {
         setIsLoading(true);
         return mainApi.register(userData)
         .catch((err)=> {
-            setInfoTooltipMsg(errors(err));
-            setInfoTooltipOpen(true);
+            showErrorToUser(err);
+            setIsLoading(false);
         })
-        .finally(setIsLoading(false))  
     }
     function handleLogin (userData) {
         setIsLoading(true);
@@ -104,8 +103,10 @@ function App() {
                 handleLogout();
             }
             })
-        .catch((err)=> showErrorToUser(err))
-        .finally(setIsLoading(false));
+        .catch((err)=> {
+            showErrorToUser(err);
+            setIsLoading(false);
+        })
     }
     function handleUpdateUserInfo(data) {
         setIsLoading(true);
@@ -120,8 +121,8 @@ function App() {
             setInfoTooltipOpen(true);
             })              
         .catch((err)=> {
-            setInfoTooltipMsg(errors(err));
-            setInfoTooltipOpen(true);
+            showErrorToUser(err);
+            setIsLoading(false);
         })
     }
     function handleLogout() {
@@ -166,9 +167,6 @@ function App() {
         <CurrentUserContext.Provider value={{currentUser,setCurrentUser}}>
             <BrowserRouter>
                 <div className="page">
-                    {
-                        isLoading && <Preloader />
-                    }
                     <Routes>
                         <Route 
                             path="/signin" 
