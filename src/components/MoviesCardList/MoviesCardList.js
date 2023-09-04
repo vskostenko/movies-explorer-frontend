@@ -53,7 +53,7 @@ function MoviesCardList (props) {
                             />
 		        })}
             </ul>
-            { props.allMovies.length > itemCount && 
+            { checkedMovies.length > itemCount && 
                 <button className="moviescardlist__button" onClick={buttonHandler}>
                     Ещё
                 </button>

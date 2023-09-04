@@ -26,7 +26,7 @@ function Profile (props) {
       }, []) 
     function handleLogout () {
         props.onLogout();
-        navigate("/signin", { replace: true });
+        navigate("/", { replace: true });
     }
     function handleEdit (e) {
         e.preventDefault();
