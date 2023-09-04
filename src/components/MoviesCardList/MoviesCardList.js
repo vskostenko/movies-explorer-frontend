@@ -12,13 +12,11 @@ function MoviesCardList (props) {
     const [checkedMovies, setCheckedMovies] = useState ([]);
 
     useEffect (()=> {
-            const movies = props.allMovies.filter ((movie) => {
-                if (!props.isShortMovies  && movie.duration < SHORT_MOVIE_LENGTH) return false
-                else return true;
-            })
-            setCheckedMovies(movies);
-        }, [props.isShortMovies, props.allMovies])
+        const moviesSS = getFilteredMovies;
+        setCheckedMovies(moviesSS);
 
+        }, [props.isShortMovies, props.allMovies])
+    
     function buttonHandler () {
         setItemCount(itemCount+moreCount);
     }
@@ -34,6 +32,13 @@ function MoviesCardList (props) {
             setMoreCount(2);
         }
     },[width])
+    function getFilteredMovies () { 
+        return ((props.allMovies.filter ((movie) => 
+            (props.isShortMovies ? movie.duration <=SHORT_MOVIE_LENGTH : movie)
+            )
+        ))
+    }
+
     return (
         <section className="moviescardlist">
             <ul className="moviescardlist__grid">

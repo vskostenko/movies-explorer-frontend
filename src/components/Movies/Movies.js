@@ -5,7 +5,6 @@ import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
-import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { MOVIES_SERVER_URL } from "../../utils/constants";
 import searchWordInArray from "../../utils/searchWordInArray";
@@ -41,7 +40,6 @@ function Movies (props) {
         }
         props.setIsLoading(false);
     }
-
 
     function addMovieToSaved (movie) {
         mainApi.createMovie(
@@ -89,7 +87,7 @@ function Movies (props) {
                 ?     
                             <MoviesCardList 
                                 allMovies = { filteredMovies }
-                                isShortMovies={ props.isShortMovies }
+                                isShortMovies={ isShortMovies }
                                 onSaveMovie={addMovieToSaved}
                                 onRemoveMovie={props.onRemoveMovie}
                                 savedMovies={props.savedMovies}
