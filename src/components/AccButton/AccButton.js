@@ -3,12 +3,12 @@ import "./AccButton.css";
 import { Link } from "react-router-dom";
 import accIcon from "../../images/acc-icon.svg";
 
-function AccButton () {
+function AccButton (props) {
 
     return (
-            <Link to="/profile" className="link">
+            <Link to="/profile" className="link" onClick={props.onMenuModalClose}>
                 <button className="accbutton">
-                    <caption className="accbutton__text">Аккаунт</caption>
+                    <p className="accbutton__text">Аккаунт</p>
                     <img src={accIcon} className="accbutton__icon" alt="account" />                  
                 </button>
             </Link>

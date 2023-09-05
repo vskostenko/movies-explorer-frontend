@@ -1,19 +1,41 @@
+import { useForm } from "react-hook-form" 
 import React from "react";
-import findIcon from "../../images/find.svg";
 import "./SearchForm.css";  
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-function SearchForm () {
-    function handleChange() {
-
-    }
+function SearchForm (props) {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();   
+    const onSubmit = (data) => {
+        props.onSubmit(data);
+    };
     return (
         <div className="searhform" >
-            <form className="searchform__container">
-                <input className="searchform__field" type="film" name="film" required placeholder="Фильм"  autoComplete="off" onChange={handleChange}/>
-                <input className="searhform__button" type="submit" value=" " />
+            <form 
+                className="searchform__container"
+                onSubmit={handleSubmit(onSubmit)}
+                >
+                <input
+                    placeholder="Фильм"
+                    defaultValue={props.searchWord}
+                    {...register("searchField", { required: true })} 
+                    className="searchform__field"
+                    onChange={props.onInputChange}
+                />
+                {errors.searchField && <span>Нужно ввести ключевое слово</span>}
+                <input 
+                    className="searhform__button" 
+                    type="submit"
+                    value=" "
+                />
             </form>
-            <FilterCheckbox />
+            <FilterCheckbox 
+                isShortMovies={props.isShortMovies}
+                checkboxHandler={props.checkboxHandler}
+            />
         </div>
     )
 }

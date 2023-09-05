@@ -30,7 +30,7 @@
     padding: 0;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:920px) {
     .moviescardlist__grid {
         row-gap: 36px;
         column-gap: 30px;

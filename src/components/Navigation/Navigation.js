@@ -17,9 +17,9 @@ function Navigation (props) {
             <Link to="/saved-movies" className="link">  
                 <li className="navigation__item">Сохранённые фильмы</li>  
             </Link>  
-            <li className="navigation__item link">
-                <AccButton />
-            </li>
+                <li className="navigation__item link">
+                    <AccButton />
+                </li>
         </nav>
         </>
     )

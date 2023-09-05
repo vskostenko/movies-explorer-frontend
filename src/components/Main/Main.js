@@ -8,10 +8,13 @@ import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer"
 
 function Main (props) {
-  console.log(props.onModalMenuClick);
     return (
       <main>
-        <Header />
+        <Header 
+          loggedIn={props.loggedIn}
+          onModalMenuClick = { props.onModalMenuClick }
+          onModalMenuClose = { props.onModalMenuClose }
+          />
         <Promo />
         <AboutProject />
         <Techs />

@@ -5,7 +5,7 @@ import './Logo.css';
 
 function Logo () {
     return (
-        <Link className='logo' to='/'>
+        <Link to="/" className="Link"> 
             <img src={logotype} alt="Best logo ever"/>
         </Link>
     )

@@ -40,12 +40,9 @@
 .searhform__button:hover {
     opacity: 0.6;
 }
-
 .searhform__button:active {
     transform: scale(0.9);
 }
-
-
 
 @media screen and (max-width:768px) {
 

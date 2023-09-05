@@ -8,19 +8,16 @@ import LoginNavi from "../LoginNavi/LoginNavi";
 
 function Header(props) {
     let { pathname } = useLocation();
-    console.log(props.onModalMenuClick);
     return (
         <>
             <header  className={ pathname === '/' ? 'header' : 'header header_black'}>
                 <div className="header__container">
-                    <Link to="/movies" className="Link"> 
-                        <Logo />
-                    </Link>
-                    { pathname ==='/' 
-                        ? <LoginNavi /> 
-                        : <Navigation 
+                    <Logo />
+                    { props.loggedIn
+                        ? <Navigation 
                             onModalMenuClick={props.onModalMenuClick}
                         /> 
+                        : <LoginNavi />
                     }
                 </div>
             </header>
